@@ -11,7 +11,7 @@ getEntityImage(props.item).then(function (response) {
 </script>
 
 <template>
-  <div class="item">
+  <div class="item-card">
     <div class="item-name">{{ item.name }}</div>
     <div class="item-img-container">
       <img class="item-img" :src="imageUrl" :title="item.name" />
@@ -20,20 +20,22 @@ getEntityImage(props.item).then(function (response) {
   </div>
 </template>
 <style lang="css" scoped>
-.item {
+.item-card {
   width: 20%;
-  border: solid 1px white;
+  border: solid 2px var(--border);
   border-radius: 5px;
   margin: 1em;
 }
 
 .item-name {
+  margin-top: 0.2em;
   font-size:larger;
   font-weight: bold;
 }
 
 .item-description {
   font-style: italic;
+  margin-bottom: 0.2em;
 }
 
 .item-img {

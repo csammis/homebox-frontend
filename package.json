@@ -9,9 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "isotope-layout": "^3.0.6",
     "vue": "^3.5.39"
   },
   "devDependencies": {
+    "@types/isotope-layout": "^3.0.15",
     "@types/node": "^24.13.2",
     "@vitejs/plugin-vue": "^6.0.7",
     "@vue/tsconfig": "^0.9.1",
