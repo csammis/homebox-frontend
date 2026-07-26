@@ -15,8 +15,8 @@ export class Entity {
   public parent: Entity;
   public entityType: EntityType;
   public tags: Tag[];
-  public image: string | undefined;
-  public thumbnail: string | undefined;
+  public imageId: string | undefined;
+  public thumbnailId: string | undefined;
   public soldAt: Date | undefined;
 
   public constructor(
@@ -33,8 +33,8 @@ export class Entity {
     parent: Entity,
     entityType: EntityType,
     tags: Tag[],
-    image: string | undefined,
-    thumbnail: string | undefined,
+    imageId: string | undefined,
+    thumbnailId: string | undefined,
     soldAt: Date | undefined,
   ) {
     this.id = id;
@@ -50,8 +50,18 @@ export class Entity {
     this.parent = parent;
     this.entityType = entityType;
     this.tags = tags;
-    this.image = image;
-    this.thumbnail = thumbnail;
+    this.imageId = imageId;
+    this.thumbnailId = thumbnailId;
     this.soldAt = soldAt;
   }
+}
+
+export async function getEntityImage(entity: Entity): Promise<string> {
+  if (entity.imageId) {
+    const response = await fetch(
+      "/api/entities/" + entity.id + "/attachments/" + entity.imageId,
+    );
+    return URL.createObjectURL(await response.blob());
+  }
+  return "";
 }

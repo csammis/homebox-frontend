@@ -10,5 +10,11 @@ def getEntities(tag: str):
     r : requests.Response = requests.get(f"{BASE_URL}entities?tags={tag}", headers={"Authorization" : API_KEY})
     return r.json()
 
+@app.route('/api/entities/<entityId>/attachments/<attachmentId>')
+def getEntityAttachment(entityId: str, attachmentId: str):
+    r : requests.Response = requests.get(f"{BASE_URL}entities/{entityId}/attachments/{attachmentId}",
+                                         headers={"Authorization": API_KEY})
+    return r.content
+
 if __name__ == "__main__":
     app.run(debug=True)
