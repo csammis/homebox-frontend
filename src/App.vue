@@ -1,7 +1,15 @@
 <script setup lang="ts">
-import HomeBoxTagViewer from './components/HomeBoxTagViewer.vue';
+import HomeScreen from './components/HomeScreen.vue';
 </script>
 
 <template>
-  <HomeBoxTagViewer />
+  <div class="banner">
+    <header>Pretty Good On Paper</header>
+    <em>An Unprofitable Side Hustle</em>
+  </div>
+  <div class="main">
+    <main>
+      <HomeScreen />
+    </main>
+  </div>
 </template>

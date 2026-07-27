@@ -2,12 +2,13 @@
 import Isotope from 'isotope-layout'
 import type { IsotopeOptions } from 'isotope-layout'
 import { useTemplateRef, ref, onMounted, nextTick } from 'vue'
-import { getEntitiesByTag } from '../models/HomeBox/entities';
-import { Entity } from '../models/HomeBox/entity.ts';
-import { Tag } from '../models/HomeBox/tag.ts';
+import { getEntitiesByTag } from '../../models/HomeBox/entities.ts';
+import { Entity } from '../../models/HomeBox/entity.ts';
+import { Tag } from '../../models/HomeBox/tag.ts';
 import HomeBoxItem from './HomeBoxItem.vue';
 
 const items = ref<Entity[]>()
+const props = defineProps<{ tag: Tag }>()
 
 const gridContainer = useTemplateRef('items-container')
 
@@ -19,8 +20,7 @@ const isoOptions = {
 
 onMounted(() => {
   iso = new Isotope(gridContainer.value as HTMLElement, isoOptions)
-  let tag = new Tag("5829ac63-a8bf-4ddd-aa26-029798d2ad6d", "", "", "", "", "", "", "")
-  getEntitiesByTag(tag).then(async function (resource) {
+  getEntitiesByTag(props.tag).then(async function (resource) {
     items.value = resource.items
     await nextTick()
     iso?.reloadItems()
@@ -31,10 +31,10 @@ onMounted(() => {
 </script>
 <template>
   <div class="items-container" ref="items-container">
-        <HomeBoxItem
-          v-for="item in items"
-          :key="item.id"
-          :item="item"
-        /> 
-</div>
+    <HomeBoxItem
+      v-for="item in items"
+      :key="item.id"
+      :item="item"
+    /> 
+  </div>
 </template>

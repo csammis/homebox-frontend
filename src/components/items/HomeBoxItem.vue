@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { Entity, getEntityImage } from '../models/HomeBox/entity';
+import { Entity, getEntityImage } from '../../models/HomeBox/entity';
 
 const imageUrl = ref<string>()
 const props = defineProps<{ item: Entity }>()
@@ -25,6 +25,7 @@ getEntityImage(props.item).then(function (response) {
   border: solid 2px var(--border);
   border-radius: 5px;
   margin: 1em;
+  aspect-ratio: 1;
 }
 
 .item-name {
