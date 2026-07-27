@@ -12,3 +12,13 @@ export class Tag {
     this.id = id;
   }
 }
+
+export async function getTags(): Promise<Tag[]> {
+  const response = await fetch("/api/tags");
+  return (await response.json()) as Tag[];
+}
+
+export async function getTagById(tag: Tag): Promise<Tag> {
+  const response = await fetch("/api/tags/" + tag.id);
+  return (await response.json()) as Tag;
+}
