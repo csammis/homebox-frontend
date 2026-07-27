@@ -31,7 +31,7 @@ onMounted(() => {
 </script>
 <template>
   <div class="items">
-    <div class="items-title">{{ tag.name }}</div>
+    <div class="tag-name">{{ tag.name }}</div>
     <div class="items-container" ref="items-container">
       <HomeBoxItem
         v-for="item in items"
@@ -42,7 +42,9 @@ onMounted(() => {
   </div>
 </template>
 <style lang="css" scoped>
-.items-title {
+.tag-name {
   text-align: left;
+  font-weight: bold;
+  font-size: larger;
 }
 </style>

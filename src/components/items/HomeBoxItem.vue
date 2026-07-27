@@ -22,7 +22,7 @@ getEntityImage(props.item).then(function (response) {
 <style lang="css" scoped>
 .item-card {
   width: 20%;
-  border: solid 2px var(--border);
+  border: solid 2px var(--color-border);
   border-radius: 5px;
   margin: 1em;
   aspect-ratio: 1;
