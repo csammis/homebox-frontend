@@ -10,6 +10,22 @@ getEntityImage(props.item).then(function (response) {
 });
 
 const routeToDetails = () => { return "/details/" + props.item.id };
+function firstSentence(description: string) : string {
+  if (description.length < 2) {
+    return description
+  }
+  let stopIndex = description.indexOf(".")
+  if (stopIndex == -1) {
+    stopIndex = description.indexOf("!")
+    if (stopIndex == -1) {
+      stopIndex = description.indexOf("?")
+      if (stopIndex == -1) {
+        stopIndex = description.length - 2
+      }
+    }
+  }
+  return description.substring(0, stopIndex + 1)
+};
 </script>
 
 <template>
@@ -20,7 +36,7 @@ const routeToDetails = () => { return "/details/" + props.item.id };
     <div class="item-img-container">
       <img class="item-img" :src="imageUrl" :title="item.name" />
     </div>
-    <div class="item-description">{{ item.description }}</div>
+    <div class="item-description">{{ firstSentence(item.description) }}</div>
   </div>
 </template>
 <style lang="css" scoped>
