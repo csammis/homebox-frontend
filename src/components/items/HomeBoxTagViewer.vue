@@ -22,9 +22,11 @@ onMounted(() => {
   iso = new Isotope(gridContainer.value as HTMLElement, isoOptions)
   getEntitiesByTag(props.tag).then(async function (resource) {
     items.value = resource.items
+    if (items.value.length > 0) {
       await nextTick()
       iso?.reloadItems()
       iso?.arrange(isoOptions)
+    }
   })
 })
 
