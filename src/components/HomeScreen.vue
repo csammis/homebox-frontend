@@ -2,8 +2,11 @@
 import { onMounted, ref } from 'vue';
 import { getTags, Tag } from '../models/HomeBox/tag.ts';
 import HomeBoxTagViewer from './items/HomeBoxTagViewer.vue';
+import { useHead } from '@unhead/vue';
 
 const tags = ref<Tag[]>()
+
+useHead({title: "Home"})
 
 onMounted(function() {
   getTags().then(function (response) {
