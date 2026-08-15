@@ -5,8 +5,9 @@ import HomeScreen from './components/HomeScreen.vue';
 <template>
   <div class="banner">
     <header>
-      <div class="title">Pretty Good On Paper</div>
-      <div class="subtitle">An Unprofitable Side Hustle</div>
+      <div class="title">
+        <img src="@/assets/pgop-logo.svg" width="500px" title="Pretty Good On Paper logo" />
+      </div>
     </header>
   </div>
   <div class="main">
@@ -23,10 +24,6 @@ header {
   vertical-align: middle;
   background-color: var(--color-banner);
   width: 100%;
-}
-
-.title {
-  font-size: 3em;
 }
 
 .subtitle {
