@@ -6,6 +6,6 @@ export const router = createRouter({
   history: createMemoryHistory(),
   routes: [
     { path: "/", component: HomeScreen },
-    { path: "/details", component: ItemDetails },
+    { path: "/details/:id", component: ItemDetails, props: true },
   ],
 });

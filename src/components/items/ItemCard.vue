@@ -8,11 +8,15 @@ const props = defineProps<{ item: Entity }>()
 getEntityImage(props.item).then(function (response) {
   imageUrl.value = response
 });
+
+const routeToDetails = () => { return "/details/" + props.item.id };
 </script>
 
 <template>
   <div class="item-card">
-    <div class="item-name">{{ item.name }}</div>
+    <RouterLink :to="routeToDetails()">
+      <div class="item-name">{{ item.name }}</div>
+    </RouterLink>
     <div class="item-img-container">
       <img class="item-img" :src="imageUrl" :title="item.name" />
     </div>

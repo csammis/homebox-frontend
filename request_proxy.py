@@ -8,6 +8,11 @@ app.config.from_prefixed_env()
 baseUrl = ""
 API_KEY = app.config["HOMEBOX_API_KEY"]
 
+@app.route('/api/entity/<id>')
+def getEntity(id: str):
+    r : requests.Response = requests.get(f"{baseUrl}/entities/{id}", headers={"Authorization" : API_KEY})
+    return r.json()
+
 @app.route('/api/entities/<tag>')
 def getEntities(tag: str):
     r : requests.Response = requests.get(f"{baseUrl}/entities?tags={tag}", headers={"Authorization" : API_KEY})

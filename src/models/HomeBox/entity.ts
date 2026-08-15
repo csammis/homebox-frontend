@@ -65,3 +65,8 @@ export async function getEntityImage(entity: Entity): Promise<string> {
   }
   return "";
 }
+
+export async function getEntity(id: string): Promise<Entity> {
+  const response = await fetch("/api/entity/" + id);
+  return (await response.json()) as Entity;
+}

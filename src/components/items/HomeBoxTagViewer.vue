@@ -5,7 +5,7 @@ import { useTemplateRef, ref, onMounted, nextTick } from 'vue'
 import { getEntitiesByTag } from '../../models/HomeBox/entities.ts';
 import { Entity } from '../../models/HomeBox/entity.ts';
 import { Tag } from '../../models/HomeBox/tag.ts';
-import HomeBoxItem from './HomeBoxItem.vue';
+import ItemCard from './ItemCard.vue';
 
 const items = ref<Entity[]>([])
 const props = defineProps<{ tag: Tag }>()
@@ -38,7 +38,7 @@ onMounted(() => {
         Nothing here yet!
       </div>
       <div v-else class="items-container" ref="items-container">
-        <HomeBoxItem
+        <ItemCard
           v-for="item in items"
           :key="item.id"
           :item="item"
