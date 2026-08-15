@@ -1,5 +1,6 @@
 import { Tag } from "./tag";
 import { EntityType } from "./entityType";
+import { Field } from "./field";
 
 export class Entity {
   public id: string;
@@ -18,6 +19,7 @@ export class Entity {
   public imageId: string | undefined;
   public thumbnailId: string | undefined;
   public soldAt: Date | undefined;
+  public fields: Field[] | undefined;
 
   public constructor(
     id: string,
@@ -36,6 +38,7 @@ export class Entity {
     imageId: string | undefined,
     thumbnailId: string | undefined,
     soldAt: Date | undefined,
+    fields: Field[] | undefined,
   ) {
     this.id = id;
     this.assetId = assetId;
@@ -53,6 +56,7 @@ export class Entity {
     this.imageId = imageId;
     this.thumbnailId = thumbnailId;
     this.soldAt = soldAt;
+    this.fields = fields;
   }
 }
 

@@ -11,6 +11,9 @@
       <RouterView />
     </main>
   </div>
+  <footer>
+    <div>Copyright 2026 by Pretty Good On Paper</div>
+  </footer>
 </template>
 <style lang="css" scoped>
 header {
@@ -20,6 +23,13 @@ header {
   vertical-align: middle;
   background-color: var(--color-banner);
   width: 100%;
+}
+
+footer {
+  background-color: var(--color-banner);
+  width: 100%;
+  padding: 0.1em 0.5em;
+  margin-top: 1em;
 }
 
 .main {
