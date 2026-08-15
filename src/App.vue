@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import HomeScreen from './components/HomeScreen.vue';
-</script>
-
 <template>
   <div class="banner">
     <header>
@@ -12,7 +8,7 @@ import HomeScreen from './components/HomeScreen.vue';
   </div>
   <div class="main">
     <main>
-      <HomeScreen />
+      <RouterView />
     </main>
   </div>
 </template>
@@ -24,11 +20,6 @@ header {
   vertical-align: middle;
   background-color: var(--color-banner);
   width: 100%;
-}
-
-.subtitle {
-  font-style: italic;
-  padding-left:1em;
 }
 
 .main {

@@ -11,7 +11,8 @@
   "dependencies": {
     "@unhead/vue": "^3.0.0-beta.9",
     "isotope-layout": "^3.0.6",
-    "vue": "^3.5.39"
+    "vue": "^3.5.39",
+    "vue-router": "^5.2.0"
   },
   "devDependencies": {
     "@types/isotope-layout": "^3.0.15",
