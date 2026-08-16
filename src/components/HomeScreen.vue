@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { getTags, Tag } from '../models/HomeBox/tag.ts';
-import HomeBoxTagViewer from './widgets/TagListing.vue';
 import { useHead } from '@unhead/vue';
+import TagListing from './widgets/TagListing.vue';
 
 const tags = ref<Tag[]>()
 
@@ -21,7 +21,7 @@ onMounted(function() {
 });
 </script>
 <template>
-  <HomeBoxTagViewer
+  <TagListing
     v-for="tag in tags"
     :key="tag.id"
     :tag="tag" />

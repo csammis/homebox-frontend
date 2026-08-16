@@ -10,6 +10,8 @@ getEntityImage(props.item).then(function (response) {
 });
 
 const routeToDetails = () => { return "/details/" + props.item.id };
+
+//! Parse the first sentence out of the description to give a short blurb on the card
 function firstSentence(description: string) : string {
   if (description.length < 2) {
     return description
@@ -29,7 +31,7 @@ function firstSentence(description: string) : string {
 </script>
 
 <template>
-  <div class="item-card">
+  <v-col class="item-card">
     <RouterLink :to="routeToDetails()">
       <div class="item-name">{{ item.name }}</div>
     </RouterLink>
@@ -37,13 +39,13 @@ function firstSentence(description: string) : string {
       <img class="item-img" :src="imageUrl" :title="item.name" />
     </div>
     <div class="item-description">{{ firstSentence(item.description) }}</div>
-  </div>
+  </v-col>
 </template>
 <style lang="css" scoped>
 .item-card {
-  width: 20%;
   border: solid 2px var(--color-border);
   border-radius: 5px;
+  padding: 0.5em;
   margin: 1em;
   aspect-ratio: 1;
 }

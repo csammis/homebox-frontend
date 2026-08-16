@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import Isotope from 'isotope-layout'
-import type { IsotopeOptions } from 'isotope-layout'
-import { useTemplateRef, ref, onMounted, nextTick } from 'vue'
+import { ref, onMounted } from 'vue'
 import { getEntitiesByTag } from '../../models/HomeBox/entities.ts';
 import { Entity } from '../../models/HomeBox/entity.ts';
 import { Tag } from '../../models/HomeBox/tag.ts';
@@ -10,43 +8,26 @@ import ItemCard from '../widgets/ItemCard.vue';
 const items = ref<Entity[]>([])
 const props = defineProps<{ tag: Tag }>()
 
-const gridContainer = useTemplateRef('items-container')
-
-let iso: Isotope
-const isoOptions = {
-  itemSelector: '.item-card',
-  layoutMode: 'fitRows',
-} as IsotopeOptions
-
 onMounted(() => {
-  iso = new Isotope(gridContainer.value as HTMLElement, isoOptions)
   getEntitiesByTag(props.tag).then(async function (resource) {
     items.value = resource.items
-    if (items.value.length > 0) {
-      await nextTick()
-      iso?.reloadItems()
-      iso?.arrange(isoOptions)
-    }
   })
 })
-
 </script>
 <template>
-  <div class="items">
-    <div class="tag-name">{{ tag.name }}</div>
-      <div ref="items-container">
-        <div class="items-container-empty" v-if="items.length == 0">
-          Nothing here yet!
-        </div>
-        <div v-else class="items-container">
-          <ItemCard
-            v-for="item in items"
-            :key="item.id"
-            :item="item"
-          />
-        </div>
-      </div>
-  </div>
+  <div class="tag-name">{{ tag.name }}</div>
+    <div class="items-container-empty" v-if="items.length == 0">
+      Nothing here yet!
+    </div>
+    <v-container v-else class="items-container">
+      <v-row>
+      <ItemCard
+        v-for="item in items"
+        :key="item.id"
+        :item="item"
+      />
+      </v-row>
+      </v-container>
 </template>
 <style lang="css" scoped>
 .tag-name {
