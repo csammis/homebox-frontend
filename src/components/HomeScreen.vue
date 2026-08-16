@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { getTags, Tag } from '../models/HomeBox/tag.ts';
-import HomeBoxTagViewer from './items/HomeBoxTagViewer.vue';
+import HomeBoxTagViewer from './widgets/TagListing.vue';
 import { useHead } from '@unhead/vue';
 
 const tags = ref<Tag[]>()

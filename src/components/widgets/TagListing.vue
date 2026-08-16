@@ -5,7 +5,7 @@ import { useTemplateRef, ref, onMounted, nextTick } from 'vue'
 import { getEntitiesByTag } from '../../models/HomeBox/entities.ts';
 import { Entity } from '../../models/HomeBox/entity.ts';
 import { Tag } from '../../models/HomeBox/tag.ts';
-import ItemCard from './ItemCard.vue';
+import ItemCard from '../widgets/ItemCard.vue';
 
 const items = ref<Entity[]>([])
 const props = defineProps<{ tag: Tag }>()
