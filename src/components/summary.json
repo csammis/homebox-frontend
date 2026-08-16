@@ -1,0 +1,368 @@
+{
+  "items": [
+    {
+      "archived": false,
+      "assetId": "000-064",
+      "createdAt": "2026-08-16T19:10:47.71765359Z",
+      "description": "Writing: The pen puts down a reliable line that's quite fine with just a hint of bounce. I had no problems with hard starts.\n\nFilling: Lever mechanism fills well and the lever has some tabs to keep it locked down.\n\nCondition: This one is a beauty! The body is shiny and the stripes have very impressive clarity and iridescence. The trim is in great shape as well, and there's an amber window in the section to check on your remaining ink level.\n\nIt took me a while to even figure out what this one is: a less-common lever-fill model made from the same Penline celluloid as Nozac pens, in approximately 1936. Mentally, I've taken to calling it a Conklin Yeszac. You take your fun where you can get it.\n\n\n",
+      "entityType": {
+        "createdAt": "2026-07-26T00:36:04.290530925Z",
+        "description": "",
+        "icon": "",
+        "id": "abdc9816-909c-4750-ab28-a6caaf0f285a",
+        "isLocation": false,
+        "name": "Item",
+        "updatedAt": "2026-07-26T00:36:04.290531328Z"
+      },
+      "id": "df851242-7b89-45c3-86f5-e070b392f140",
+      "imageId": "c1dc2299-d1dc-4a6c-96c9-f221a90402a9",
+      "insured": false,
+      "name": "Conklin Penline (Yeszac)",
+      "parent": {
+        "archived": false,
+        "assetId": "000-058",
+        "createdAt": "2026-08-07T01:09:14.050316137Z",
+        "description": "The place where the pens live.",
+        "id": "6fc013f4-a45b-4e00-a793-7703dd6bae6c",
+        "insured": false,
+        "name": "Penventory",
+        "purchasePrice": 0,
+        "quantity": 1,
+        "soldDate": "",
+        "tags": [],
+        "updatedAt": "2026-08-07T01:09:14.050316809Z"
+      },
+      "purchasePrice": 110,
+      "quantity": 1,
+      "soldDate": "",
+      "tags": [
+        {
+          "color": "",
+          "createdAt": "2026-07-29T03:08:09.604549982Z",
+          "description": "Stock for Pretty Good On Paper",
+          "icon": "",
+          "id": "472b43c2-c880-4a82-8065-5a51239916b6",
+          "name": "Pretty Good On Paper",
+          "parentId": "00000000-0000-0000-0000-000000000000",
+          "updatedAt": "2026-07-29T03:08:09.604550173Z"
+        },
+        {
+          "color": "#a3b9bb",
+          "createdAt": "2026-07-29T03:08:35.836064872Z",
+          "description": "",
+          "icon": "",
+          "id": "b433627f-3b16-40bd-8c96-6e6e43e21a66",
+          "name": "Pens",
+          "parentId": "00000000-0000-0000-0000-000000000000",
+          "updatedAt": "2026-07-29T03:08:35.836064969Z"
+        }
+      ],
+      "thumbnailId": "a2acc6ad-1385-454d-b528-d5a116a62fde",
+      "updatedAt": "2026-08-16T19:13:02.510730211Z"
+    },
+    {
+      "archived": false,
+      "assetId": "000-062",
+      "createdAt": "2026-08-16T19:01:36.131262357Z",
+      "description": "Writing: Pleasant and smooth with a bit of flex. Pushing the flex too hard may end up temporarily mis-aligning the nib tines, but it's fairly easy to get them back into the correct place.\n\nFilling: Lever filling system works well.\n\nCondition: The gold-filled body has a chevron pattern and is bright and shiny, with very little cosmetic damage.",
+      "entityType": {
+        "createdAt": "2026-07-26T00:36:04.290530925Z",
+        "description": "",
+        "icon": "",
+        "id": "abdc9816-909c-4750-ab28-a6caaf0f285a",
+        "isLocation": false,
+        "name": "Item",
+        "updatedAt": "2026-07-26T00:36:04.290531328Z"
+      },
+      "id": "2a184bb9-57ce-4bd7-8e04-b7d4f9a4544e",
+      "imageId": "83e42a58-7e02-4f82-a372-e0d170556f24",
+      "insured": false,
+      "name": "Conklin Ringtop Gold-filled Chevron",
+      "parent": {
+        "archived": false,
+        "assetId": "000-058",
+        "createdAt": "2026-08-07T01:09:14.050316137Z",
+        "description": "The place where the pens live.",
+        "id": "6fc013f4-a45b-4e00-a793-7703dd6bae6c",
+        "insured": false,
+        "name": "Penventory",
+        "purchasePrice": 0,
+        "quantity": 1,
+        "soldDate": "",
+        "tags": [],
+        "updatedAt": "2026-08-07T01:09:14.050316809Z"
+      },
+      "purchasePrice": 100,
+      "quantity": 1,
+      "soldDate": "",
+      "tags": [
+        {
+          "color": "",
+          "createdAt": "2026-07-29T03:08:09.604549982Z",
+          "description": "Stock for Pretty Good On Paper",
+          "icon": "",
+          "id": "472b43c2-c880-4a82-8065-5a51239916b6",
+          "name": "Pretty Good On Paper",
+          "parentId": "00000000-0000-0000-0000-000000000000",
+          "updatedAt": "2026-07-29T03:08:09.604550173Z"
+        },
+        {
+          "color": "#a3b9bb",
+          "createdAt": "2026-07-29T03:08:35.836064872Z",
+          "description": "",
+          "icon": "",
+          "id": "b433627f-3b16-40bd-8c96-6e6e43e21a66",
+          "name": "Pens",
+          "parentId": "00000000-0000-0000-0000-000000000000",
+          "updatedAt": "2026-07-29T03:08:35.836064969Z"
+        }
+      ],
+      "thumbnailId": "f0ce9a8b-0846-4840-887b-e6e37b09d938",
+      "updatedAt": "2026-08-16T19:03:08.35968692Z"
+    },
+    {
+      "archived": false,
+      "assetId": "000-060",
+      "createdAt": "2026-08-15T22:36:02.592040157Z",
+      "description": "Writing: Writes quite smoothly for a nib this fine. Firm with no flex to speak of.\n\nFilling: Filling system works smoothly and easily. This pen has a breather tube which means the sac will hold more ink than your average lever-fill pen.\n\nCondition: Body is in good shape with age-appropriate light scratches. Metal trim is generally bright and clear; the cap ring shows some wear or plating loss. ",
+      "entityType": {
+        "createdAt": "2026-07-26T00:36:04.290530925Z",
+        "description": "",
+        "icon": "",
+        "id": "abdc9816-909c-4750-ab28-a6caaf0f285a",
+        "isLocation": false,
+        "name": "Item",
+        "updatedAt": "2026-07-26T00:36:04.290531328Z"
+      },
+      "id": "83bd2135-362a-4789-bcb9-f500ce0fb1c7",
+      "imageId": "87a95354-4eb0-4467-b970-c645ba678cf8",
+      "insured": false,
+      "name": "Eversharp Skyline Demi Black",
+      "parent": {
+        "archived": false,
+        "assetId": "000-058",
+        "createdAt": "2026-08-07T01:09:14.050316137Z",
+        "description": "The place where the pens live.",
+        "id": "6fc013f4-a45b-4e00-a793-7703dd6bae6c",
+        "insured": false,
+        "name": "Penventory",
+        "purchasePrice": 0,
+        "quantity": 1,
+        "soldDate": "",
+        "tags": [],
+        "updatedAt": "2026-08-07T01:09:14.050316809Z"
+      },
+      "purchasePrice": 80,
+      "quantity": 1,
+      "soldDate": "",
+      "tags": [
+        {
+          "color": "",
+          "createdAt": "2026-07-29T03:08:09.604549982Z",
+          "description": "Stock for Pretty Good On Paper",
+          "icon": "",
+          "id": "472b43c2-c880-4a82-8065-5a51239916b6",
+          "name": "Pretty Good On Paper",
+          "parentId": "00000000-0000-0000-0000-000000000000",
+          "updatedAt": "2026-07-29T03:08:09.604550173Z"
+        },
+        {
+          "color": "#a3b9bb",
+          "createdAt": "2026-07-29T03:08:35.836064872Z",
+          "description": "",
+          "icon": "",
+          "id": "b433627f-3b16-40bd-8c96-6e6e43e21a66",
+          "name": "Pens",
+          "parentId": "00000000-0000-0000-0000-000000000000",
+          "updatedAt": "2026-07-29T03:08:35.836064969Z"
+        }
+      ],
+      "thumbnailId": "86aed1d4-b45c-48b2-9440-94c494a21f28",
+      "updatedAt": "2026-08-16T19:04:12.272913145Z"
+    },
+    {
+      "archived": false,
+      "assetId": "000-065",
+      "createdAt": "2026-08-16T19:14:51.490181814Z",
+      "description": "Writing: Writes smoothly with some feedback and a bit of bounce.\n\nFilling: Lever system works well and the lever has good snap-back.\n\nCondition: The body color on this pen is beautiful and minimally yellowed. The cap has a circumferential crack in the darkest area; the inner cap is behind it and it does not seem to impact the pen structurally at all. The section has two dents in it where it looks like someone bit down hard with only their top teeth. The lever and cap rings are bright and clear; the ring shows a bit of corrosion-type wear.",
+      "entityType": {
+        "createdAt": "2026-07-26T00:36:04.290530925Z",
+        "description": "",
+        "icon": "",
+        "id": "abdc9816-909c-4750-ab28-a6caaf0f285a",
+        "isLocation": false,
+        "name": "Item",
+        "updatedAt": "2026-07-26T00:36:04.290531328Z"
+      },
+      "id": "d4775fdd-3362-4f64-9a89-87784a0a593f",
+      "imageId": "aea2b84b-ccaa-4222-a5ed-613c79390dca",
+      "insured": false,
+      "name": "Sheaffer 5-30 Ringtop Jade Green",
+      "parent": {
+        "archived": false,
+        "assetId": "000-058",
+        "createdAt": "2026-08-07T01:09:14.050316137Z",
+        "description": "The place where the pens live.",
+        "id": "6fc013f4-a45b-4e00-a793-7703dd6bae6c",
+        "insured": false,
+        "name": "Penventory",
+        "purchasePrice": 0,
+        "quantity": 1,
+        "soldDate": "",
+        "tags": [],
+        "updatedAt": "2026-08-07T01:09:14.050316809Z"
+      },
+      "purchasePrice": 65,
+      "quantity": 1,
+      "soldDate": "",
+      "tags": [
+        {
+          "color": "",
+          "createdAt": "2026-07-29T03:08:09.604549982Z",
+          "description": "Stock for Pretty Good On Paper",
+          "icon": "",
+          "id": "472b43c2-c880-4a82-8065-5a51239916b6",
+          "name": "Pretty Good On Paper",
+          "parentId": "00000000-0000-0000-0000-000000000000",
+          "updatedAt": "2026-07-29T03:08:09.604550173Z"
+        },
+        {
+          "color": "#a3b9bb",
+          "createdAt": "2026-07-29T03:08:35.836064872Z",
+          "description": "",
+          "icon": "",
+          "id": "b433627f-3b16-40bd-8c96-6e6e43e21a66",
+          "name": "Pens",
+          "parentId": "00000000-0000-0000-0000-000000000000",
+          "updatedAt": "2026-07-29T03:08:35.836064969Z"
+        }
+      ],
+      "thumbnailId": "ded9f3f8-7722-4042-9f31-0d2938b3f388",
+      "updatedAt": "2026-08-16T19:16:26.647754421Z"
+    },
+    {
+      "archived": false,
+      "assetId": "000-061",
+      "createdAt": "2026-08-15T22:38:58.924744327Z",
+      "description": "Writing: The fine palladium-silver nib writes smoothly with a hint of feedback.\n\nFilling: Snorkel mechanism fills reliably, drawing about 0.5 ml of ink. \n\nCondition: The body shows some wear in the form of scuffs and scratches, but has no significant damage. The Lovely two-tone metal cap is un-dented!",
+      "entityType": {
+        "createdAt": "2026-07-26T00:36:04.290530925Z",
+        "description": "",
+        "icon": "",
+        "id": "abdc9816-909c-4750-ab28-a6caaf0f285a",
+        "isLocation": false,
+        "name": "Item",
+        "updatedAt": "2026-07-26T00:36:04.290531328Z"
+      },
+      "id": "6dea0306-c829-4d9b-b259-aa5a6fed319b",
+      "imageId": "0231ea56-d0ac-445c-a3f0-2f079dbc2d53",
+      "insured": false,
+      "name": "Sheaffer Clipper Snorkel Burgundy",
+      "parent": {
+        "archived": false,
+        "assetId": "000-058",
+        "createdAt": "2026-08-07T01:09:14.050316137Z",
+        "description": "The place where the pens live.",
+        "id": "6fc013f4-a45b-4e00-a793-7703dd6bae6c",
+        "insured": false,
+        "name": "Penventory",
+        "purchasePrice": 0,
+        "quantity": 1,
+        "soldDate": "",
+        "tags": [],
+        "updatedAt": "2026-08-07T01:09:14.050316809Z"
+      },
+      "purchasePrice": 90,
+      "quantity": 1,
+      "soldDate": "",
+      "tags": [
+        {
+          "color": "",
+          "createdAt": "2026-07-29T03:08:09.604549982Z",
+          "description": "Stock for Pretty Good On Paper",
+          "icon": "",
+          "id": "472b43c2-c880-4a82-8065-5a51239916b6",
+          "name": "Pretty Good On Paper",
+          "parentId": "00000000-0000-0000-0000-000000000000",
+          "updatedAt": "2026-07-29T03:08:09.604550173Z"
+        },
+        {
+          "color": "#a3b9bb",
+          "createdAt": "2026-07-29T03:08:35.836064872Z",
+          "description": "",
+          "icon": "",
+          "id": "b433627f-3b16-40bd-8c96-6e6e43e21a66",
+          "name": "Pens",
+          "parentId": "00000000-0000-0000-0000-000000000000",
+          "updatedAt": "2026-07-29T03:08:35.836064969Z"
+        }
+      ],
+      "thumbnailId": "41584554-d351-4cc6-996c-940f5ee62d80",
+      "updatedAt": "2026-08-16T19:06:23.364654746Z"
+    },
+    {
+      "archived": false,
+      "assetId": "000-063",
+      "createdAt": "2026-08-16T19:07:47.506005324Z",
+      "description": "Writing: The nib has a nice amount of flex and handles that well, writing very reliably. I found that the feel of writing can vary quite a bit depending on the paper.\n\nFilling: Lever filling system works well.\n\nCondition: The gold-filled body has a Greek key pattern and is bright and shiny, with very little cosmetic damage. This pen is engraved with the initials J.A.B. -- It'd make a great gift for your favorite phlebotomist (or boxer)! Cap does not post.",
+      "entityType": {
+        "createdAt": "2026-07-26T00:36:04.290530925Z",
+        "description": "",
+        "icon": "",
+        "id": "abdc9816-909c-4750-ab28-a6caaf0f285a",
+        "isLocation": false,
+        "name": "Item",
+        "updatedAt": "2026-07-26T00:36:04.290531328Z"
+      },
+      "id": "8db7d4c2-3b73-42a5-8157-6a9b2b68b414",
+      "imageId": "36b42da9-0ffd-4e96-9e1c-74fe8afaa09d",
+      "insured": false,
+      "name": "Wahl Ringtop Gold-filled Greek Key",
+      "parent": {
+        "archived": false,
+        "assetId": "000-058",
+        "createdAt": "2026-08-07T01:09:14.050316137Z",
+        "description": "The place where the pens live.",
+        "id": "6fc013f4-a45b-4e00-a793-7703dd6bae6c",
+        "insured": false,
+        "name": "Penventory",
+        "purchasePrice": 0,
+        "quantity": 1,
+        "soldDate": "",
+        "tags": [],
+        "updatedAt": "2026-08-07T01:09:14.050316809Z"
+      },
+      "purchasePrice": 80,
+      "quantity": 1,
+      "soldDate": "",
+      "tags": [
+        {
+          "color": "",
+          "createdAt": "2026-07-29T03:08:09.604549982Z",
+          "description": "Stock for Pretty Good On Paper",
+          "icon": "",
+          "id": "472b43c2-c880-4a82-8065-5a51239916b6",
+          "name": "Pretty Good On Paper",
+          "parentId": "00000000-0000-0000-0000-000000000000",
+          "updatedAt": "2026-07-29T03:08:09.604550173Z"
+        },
+        {
+          "color": "#a3b9bb",
+          "createdAt": "2026-07-29T03:08:35.836064872Z",
+          "description": "",
+          "icon": "",
+          "id": "b433627f-3b16-40bd-8c96-6e6e43e21a66",
+          "name": "Pens",
+          "parentId": "00000000-0000-0000-0000-000000000000",
+          "updatedAt": "2026-07-29T03:08:35.836064969Z"
+        }
+      ],
+      "thumbnailId": "eb015a95-ca02-452e-a213-ec90764260ab",
+      "updatedAt": "2026-08-16T19:09:28.106331729Z"
+    }
+  ],
+  "page": -1,
+  "pageSize": -1,
+  "total": 6,
+  "totalPrice": 525
+}

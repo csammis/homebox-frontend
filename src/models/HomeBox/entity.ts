@@ -1,7 +1,7 @@
 import { Tag } from "./tag";
 import { EntityType } from "./entityType";
 import { Field } from "./field";
-import type { Attachment } from "./attachment";
+import { downloadAttachmentById, type Attachment } from "./attachment";
 
 export class Entity {
   public id: string;
@@ -56,6 +56,18 @@ export class Entity {
     this.fields = fields;
     this.attachments = attachments;
   }
+
+  public getThumnailIDs(): string[] {
+    let retval: string[] = [];
+    if (this.attachments) {
+      this.attachments.forEach((element) => {
+        if (element.thumbnail) {
+          retval.push(element.thumbnail.id);
+        }
+      });
+    }
+    return [];
+  }
 }
 
 //! Fetch the thumbnail for the entity using as many fallbacks before fetching the main huge image as possible:
@@ -83,10 +95,7 @@ export async function getEntityThumbnail(entity: Entity): Promise<string> {
   }
 
   if (idToFetch.length > 0) {
-    const response = await fetch(
-      "/api/entities/" + entity.id + "/attachments/" + idToFetch,
-    );
-    return URL.createObjectURL(await response.blob());
+    return downloadAttachmentById(entity, idToFetch);
   }
   return "";
 }

@@ -1,14 +1,15 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { Entity, getEntityThumbnail} from '../../models/HomeBox/entity';
 import { firstSentence, priceAsCurrency } from '../../utilities/formatters';
 
 const imageUrl = ref<string>()
 const props = defineProps<{ item: Entity }>()
 
+onMounted(() =>
 getEntityThumbnail(props.item).then(function (response) {
   imageUrl.value = response
-});
+}));
 
 const routeToDetails = () => { return "/details/" + props.item.id };
 </script>

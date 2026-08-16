@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { Entity, getEntity, getEntityThumbnail } from '../models/HomeBox/entity';
+import { Entity, getEntity } from '../models/HomeBox/entity';
 import { useHead } from '@unhead/vue';
 import FieldGridRow from './widgets/FieldGridRow.vue';
 import { priceAsCurrency } from '../utilities/formatters.ts';
+import AttachmentCarouselItem from './widgets/AttachmentCarouselItem.vue';
 
-const imageUrl = ref<string>()
 const props = defineProps<{ id: string }>()
 const item = ref<Entity>()
 
@@ -14,9 +14,6 @@ useHead({title: "Item Details"})
 onMounted(() => {
   getEntity(props.id).then(function (entityResponse) {
     item.value = entityResponse
-    getEntityThumbnail(item.value).then(function (imageResponse) {
-      imageUrl.value = imageResponse
-    })
   })
 })
 </script>
@@ -30,7 +27,13 @@ onMounted(() => {
     <v-container class="item-description-container">
       <v-row>
         <v-col class="item-img-container">
-          <img class="item-img" :src="imageUrl" :title="item?.name" />
+          <v-carousel>
+            <AttachmentCarouselItem v-for="attachment in item?.attachments"
+              :key="attachment.id"
+              :entity="item"
+              :attachment="attachment">
+            </AttachmentCarouselItem>
+          </v-carousel>
         </v-col>
         <v-col class="item-description">
           <v-container>

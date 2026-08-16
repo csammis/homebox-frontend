@@ -1,0 +1,237 @@
+{
+  "archived": false,
+  "assetId": "000-064",
+  "attachments": [
+    {
+      "createdAt": "2026-08-16T19:10:47.821366253Z",
+      "id": "8396c193-8836-4e01-8d64-e9392501a6af",
+      "mimeType": "image/jpeg",
+      "path": "04fa30c0-ae9c-45a3-91cd-40f0d286cafa/documents/53ecd6883d033663ecbac34d9fdaae18c7b53f3d5cb7317610e6aee1907a8b38",
+      "primary": false,
+      "thumbnail": {
+        "created_at": "2026-08-16T19:10:48.00593656Z",
+        "edges": {},
+        "id": "297747a1-fe5f-4a4a-8cfc-57e1cc9aced7",
+        "mime_type": "image/webp",
+        "path": "04fa30c0-ae9c-45a3-91cd-40f0d286cafa/documents/d987ceb0c48ec3e7e9f4ce502f4f623c15b49fee3dbfd3e158f3ad36dff6577b",
+        "title": "IMG_8628.jpg-thumb",
+        "type": "thumbnail",
+        "updated_at": "2026-08-16T19:10:48.005936635Z"
+      },
+      "title": "IMG_8628.jpg",
+      "type": "photo",
+      "updatedAt": "2026-08-16T19:10:48.006028744Z"
+    },
+    {
+      "createdAt": "2026-08-16T19:10:47.877215683Z",
+      "id": "c3370837-af89-459a-94e7-56963b66cfde",
+      "mimeType": "image/jpeg",
+      "path": "04fa30c0-ae9c-45a3-91cd-40f0d286cafa/documents/9055b4c61fffb316a8104f2f04808912b63013781eaaad363d1777297da5add5",
+      "primary": false,
+      "thumbnail": {
+        "created_at": "2026-08-16T19:10:48.135927725Z",
+        "edges": {},
+        "id": "b7da71c6-5382-435f-abc3-3fefa53d15ef",
+        "mime_type": "image/webp",
+        "path": "04fa30c0-ae9c-45a3-91cd-40f0d286cafa/documents/1b5ca38ef160cc01b6461b96db04356c2b66c7127758b984c34011028275989a",
+        "title": "IMG_8629.jpg-thumb",
+        "type": "thumbnail",
+        "updated_at": "2026-08-16T19:10:48.135927823Z"
+      },
+      "title": "IMG_8629.jpg",
+      "type": "photo",
+      "updatedAt": "2026-08-16T19:10:48.136024286Z"
+    },
+    {
+      "createdAt": "2026-08-16T19:10:47.936440299Z",
+      "id": "c1dc2299-d1dc-4a6c-96c9-f221a90402a9",
+      "mimeType": "image/jpeg",
+      "path": "04fa30c0-ae9c-45a3-91cd-40f0d286cafa/documents/d942decd6480e2f0f4aa201f07032b56fb28eec6430d42742be701da5dc9466b",
+      "primary": true,
+      "thumbnail": {
+        "created_at": "2026-08-16T19:10:48.32466756Z",
+        "edges": {},
+        "id": "a2acc6ad-1385-454d-b528-d5a116a62fde",
+        "mime_type": "image/webp",
+        "path": "04fa30c0-ae9c-45a3-91cd-40f0d286cafa/documents/acf81319a8a634615eea64863b23c88ab5f1749f92fd7186d5b3938be0ccbadc",
+        "title": "IMG_8630.jpg-thumb",
+        "type": "thumbnail",
+        "updated_at": "2026-08-16T19:10:48.324667643Z"
+      },
+      "title": "IMG_8630.jpg",
+      "type": "photo",
+      "updatedAt": "2026-08-16T19:10:48.324753836Z"
+    },
+    {
+      "createdAt": "2026-08-16T19:10:47.987561694Z",
+      "id": "35d5fd14-e421-44d4-8a0d-2bafb9bdc09f",
+      "mimeType": "image/jpeg",
+      "path": "04fa30c0-ae9c-45a3-91cd-40f0d286cafa/documents/57192ead1b73b5017a691265ffa0a52dc8605dd53beacbed28ce96549c1b75d2",
+      "primary": false,
+      "thumbnail": {
+        "created_at": "2026-08-16T19:10:48.411840661Z",
+        "edges": {},
+        "id": "5bc4f201-a1f8-4bcc-a22e-baa45479c1f8",
+        "mime_type": "image/webp",
+        "path": "04fa30c0-ae9c-45a3-91cd-40f0d286cafa/documents/26d55e49ad076c17fe27e6af60464a9c66ff0c9a52cc3d1b998138e82effdaab",
+        "title": "IMG_8631.jpg-thumb",
+        "type": "thumbnail",
+        "updated_at": "2026-08-16T19:10:48.411840746Z"
+      },
+      "title": "IMG_8631.jpg",
+      "type": "photo",
+      "updatedAt": "2026-08-16T19:10:48.411956937Z"
+    },
+    {
+      "createdAt": "2026-08-16T19:10:48.047542973Z",
+      "id": "f3530295-b8aa-4b24-b424-04bc6389fb33",
+      "mimeType": "image/jpeg",
+      "path": "04fa30c0-ae9c-45a3-91cd-40f0d286cafa/documents/bcecb8e8d51d36393db91762dc46d89e5d20ec0e703b153486403ac56aa4d44e",
+      "primary": false,
+      "thumbnail": {
+        "created_at": "2026-08-16T19:10:48.248329246Z",
+        "edges": {},
+        "id": "97da6213-dda8-47c7-9fa5-4a4ebd7a0662",
+        "mime_type": "image/webp",
+        "path": "04fa30c0-ae9c-45a3-91cd-40f0d286cafa/documents/5b41204e49b22ea241a048a0d448b4673aa6ebffee70eb9449b55abf61bbaaab",
+        "title": "IMG_8632.jpg-thumb",
+        "type": "thumbnail",
+        "updated_at": "2026-08-16T19:10:48.248329341Z"
+      },
+      "title": "IMG_8632.jpg",
+      "type": "photo",
+      "updatedAt": "2026-08-16T19:10:48.248406378Z"
+    },
+    {
+      "createdAt": "2026-08-16T19:10:48.116446859Z",
+      "id": "037266fc-c104-4339-b0d9-0b7f5127b28e",
+      "mimeType": "image/jpeg",
+      "path": "04fa30c0-ae9c-45a3-91cd-40f0d286cafa/documents/d54419d5990c15d75b9439aeec2dc9a61fe2b75860ccda45e205ba1cd7156058",
+      "primary": false,
+      "thumbnail": {
+        "created_at": "2026-08-16T19:10:48.523148365Z",
+        "edges": {},
+        "id": "7a2c0336-7dbc-46fd-9b90-738173cc2382",
+        "mime_type": "image/webp",
+        "path": "04fa30c0-ae9c-45a3-91cd-40f0d286cafa/documents/57650c6b9a1e69624919b60664c179722574ffd89067dedc2d5424213efc751d",
+        "title": "IMG_8633.jpg-thumb",
+        "type": "thumbnail",
+        "updated_at": "2026-08-16T19:10:48.523148447Z"
+      },
+      "title": "IMG_8633.jpg",
+      "type": "photo",
+      "updatedAt": "2026-08-16T19:10:48.523267479Z"
+    }
+  ],
+  "createdAt": "2026-08-16T19:10:47.71765359Z",
+  "description": "Writing: The pen puts down a reliable line that's quite fine with just a hint of bounce. I had no problems with hard starts.\n\nFilling: Lever mechanism fills well and the lever has some tabs to keep it locked down.\n\nCondition: This one is a beauty! The body is shiny and the stripes have very impressive clarity and iridescence. The trim is in great shape as well, and there's an amber window in the section to check on your remaining ink level.\n\nIt took me a while to even figure out what this one is: a less-common lever-fill model made from the same Penline celluloid as Nozac pens, in approximately 1936. Mentally, I've taken to calling it a Conklin Yeszac. You take your fun where you can get it.\n\n\n",
+  "entityType": {
+    "createdAt": "2026-07-26T00:36:04.290530925Z",
+    "description": "",
+    "icon": "",
+    "id": "abdc9816-909c-4750-ab28-a6caaf0f285a",
+    "isLocation": false,
+    "name": "Item",
+    "updatedAt": "2026-07-26T00:36:04.290531328Z"
+  },
+  "fields": [
+    {
+      "booleanValue": false,
+      "id": "15468765-5b63-4924-9923-0d929cb14345",
+      "name": "Nib Size",
+      "numberValue": 0,
+      "textValue": "Fine",
+      "type": "text"
+    },
+    {
+      "booleanValue": false,
+      "id": "ee7978a7-4471-4b34-b7f6-6a2b7ee2b84f",
+      "name": "Flex",
+      "numberValue": 0,
+      "textValue": "Bounce",
+      "type": "text"
+    },
+    {
+      "booleanValue": false,
+      "id": "62943db1-f04f-4b10-9152-6df406f3c3a1",
+      "name": "Vintage",
+      "numberValue": 0,
+      "textValue": "1936",
+      "type": "text"
+    },
+    {
+      "booleanValue": false,
+      "id": "22e25ad5-b415-4115-badb-42388e7e0781",
+      "name": "Filling Mechanism",
+      "numberValue": 0,
+      "textValue": "Lever",
+      "type": "text"
+    }
+  ],
+  "id": "df851242-7b89-45c3-86f5-e070b392f140",
+  "imageId": "c1dc2299-d1dc-4a6c-96c9-f221a90402a9",
+  "insured": false,
+  "lifetimeWarranty": false,
+  "manufacturer": "",
+  "modelNumber": "",
+  "name": "Conklin Penline (Yeszac)",
+  "notes": "",
+  "parent": {
+    "archived": false,
+    "assetId": "000-058",
+    "createdAt": "2026-08-07T01:09:14.050316137Z",
+    "description": "The place where the pens live.",
+    "entityType": {
+      "createdAt": "2026-07-26T00:26:53.108528842Z",
+      "description": "",
+      "icon": "",
+      "id": "2c543b13-3f51-473a-a4f3-5b099c938494",
+      "isLocation": true,
+      "name": "Location",
+      "updatedAt": "2026-07-26T00:26:53.108528926Z"
+    },
+    "id": "6fc013f4-a45b-4e00-a793-7703dd6bae6c",
+    "insured": false,
+    "name": "Penventory",
+    "purchasePrice": 0,
+    "quantity": 1,
+    "soldDate": "",
+    "tags": [],
+    "updatedAt": "2026-08-07T01:09:14.050316809Z"
+  },
+  "purchaseDate": "",
+  "purchaseFrom": "",
+  "purchasePrice": 110,
+  "quantity": 1,
+  "serialNumber": "",
+  "soldDate": "",
+  "soldNotes": "",
+  "soldPrice": 0,
+  "soldTo": "",
+  "syncChildEntityLocations": false,
+  "tags": [
+    {
+      "color": "",
+      "createdAt": "2026-07-29T03:08:09.604549982Z",
+      "description": "Stock for Pretty Good On Paper",
+      "icon": "",
+      "id": "472b43c2-c880-4a82-8065-5a51239916b6",
+      "name": "Pretty Good On Paper",
+      "parentId": "00000000-0000-0000-0000-000000000000",
+      "updatedAt": "2026-07-29T03:08:09.604550173Z"
+    },
+    {
+      "color": "#a3b9bb",
+      "createdAt": "2026-07-29T03:08:35.836064872Z",
+      "description": "",
+      "icon": "",
+      "id": "b433627f-3b16-40bd-8c96-6e6e43e21a66",
+      "name": "Pens",
+      "parentId": "00000000-0000-0000-0000-000000000000",
+      "updatedAt": "2026-07-29T03:08:35.836064969Z"
+    }
+  ],
+  "updatedAt": "2026-08-16T19:13:02.510730211Z",
+  "warrantyDetails": "",
+  "warrantyExpires": ""
+}
