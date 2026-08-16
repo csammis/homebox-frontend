@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, shallowRef } from 'vue';
 import { Entity, getEntity } from '../models/HomeBox/entity';
 import { useHead } from '@unhead/vue';
 import FieldGridRow from './widgets/FieldGridRow.vue';
@@ -7,7 +7,8 @@ import { priceAsCurrency } from '../utilities/formatters.ts';
 import AttachmentCarouselItem from './widgets/AttachmentCarouselItem.vue';
 
 const props = defineProps<{ id: string }>()
-const item = ref<Entity>()
+const item = ref<Entity>();
+const currentIndex = shallowRef(0)
 
 useHead({title: "Item Details"})
 
@@ -27,12 +28,27 @@ onMounted(() => {
     <v-container class="item-description-container">
       <v-row>
         <v-col class="item-img-container">
-          <v-carousel>
+          <v-carousel v-model="currentIndex"
+            :hide-delimiters="true">
             <AttachmentCarouselItem v-for="attachment in item?.attachments"
               :key="attachment.id"
               :entity="item"
               :attachment="attachment">
             </AttachmentCarouselItem>
+            <v-overlay
+              contained
+              persistent
+              no-click-animation
+              model-value
+              :scrim="false"
+              content-class="align-center d-flex flex-column w-100 h-100 py-3 justify-end pointer-pass-through">
+              <v-chip
+                :text="`${ currentIndex + 1 } / ${item.attachments?.length }`"
+                color="#eee"
+                size="small"
+                variant="flat"
+              ></v-chip>
+            </v-overlay>
           </v-carousel>
         </v-col>
         <v-col class="item-description">

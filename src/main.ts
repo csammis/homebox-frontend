@@ -1,7 +1,10 @@
+import "vuetify/styles";
+import "./style.css";
+import "@mdi/font/css/materialdesignicons.css";
+
 import { createApp } from "vue";
 import { createHead } from "@unhead/vue/client";
 import { router } from "./router.ts";
-import "./style.css";
 import App from "./App.vue";
 import { createVuetify } from "vuetify";
 import * as components from "vuetify/components";
