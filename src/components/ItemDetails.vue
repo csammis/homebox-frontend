@@ -3,7 +3,7 @@ import { onMounted, ref, shallowRef } from 'vue';
 import { Entity, getEntity } from '../models/HomeBox/entity';
 import { useHead } from '@unhead/vue';
 import FieldGridRow from './widgets/FieldGridRow.vue';
-import { priceAsCurrency } from '../utilities/formatters.ts';
+import { htmlizeLineBreaks, priceAsCurrency } from '../utilities/formatters.ts';
 import AttachmentCarouselItem from './widgets/AttachmentCarouselItem.vue';
 
 const props = defineProps<{ id: string }>()
@@ -54,7 +54,7 @@ onMounted(() => {
         <v-col class="item-description">
           <v-container>
             <v-row>
-              {{ item?.description }}
+              <div v-html="htmlizeLineBreaks(item?.description)"></div>
             </v-row>
             <v-row class="item-price">{{ priceAsCurrency(item.purchasePrice) }}</v-row>
             <v-row>

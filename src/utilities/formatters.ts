@@ -15,11 +15,15 @@ export function firstSentence(description: string): string {
   return description.substring(0, stopIndex + 1);
 }
 
-const formatter = new Intl.NumberFormat("default", {
+export function htmlizeLineBreaks(description: string): string {
+  return description.replaceAll("\n", "<br />");
+}
+
+const currencyFormatter = new Intl.NumberFormat("default", {
   style: "currency",
   currency: "USD",
 });
 
 export function priceAsCurrency(price: number): string {
-  return formatter.format(price);
+  return currencyFormatter.format(price);
 }
