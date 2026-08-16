@@ -15,19 +15,15 @@ onMounted(() => {
 })
 </script>
 <template>
-  <div class="tag-name">{{ tag.name }}</div>
-    <div class="items-container-empty" v-if="items.length == 0">
-      Nothing here yet!
-    </div>
-    <v-container v-else class="items-container">
-      <v-row>
+  <v-container v-if="items.length > 0" class="items-container">
+    <v-row size="3">
       <ItemCard
         v-for="item in items"
         :key="item.id"
         :item="item"
       />
-      </v-row>
-      </v-container>
+    </v-row>
+  </v-container>
 </template>
 <style lang="css" scoped>
 .tag-name {

@@ -16,11 +16,11 @@ const routeToDetails = () => { return "/details/" + props.item.id };
 <template>
   <v-col class="item-card">
     <RouterLink :to="routeToDetails()">
-      <div class="item-name">{{ item.name }}</div>
+      <div class="item-name"><h2>{{ item.name }}</h2></div>
+      <div class="item-img-container">
+        <img class="item-img" :src="imageUrl" :title="item.name" />
+      </div>
     </RouterLink>
-    <div class="item-img-container">
-      <img class="item-img" :src="imageUrl" :title="item.name" />
-    </div>
     <div class="item-description">{{ firstSentence(item.description) }}</div>
     <div class="item-price">{{ priceAsCurrency(item.purchasePrice) }}</div>
   </v-col>
@@ -33,13 +33,19 @@ const routeToDetails = () => { return "/details/" + props.item.id };
   margin: 1em;
 }
 
+.item-img-container {
+  display:flex;
+  justify-content: center;
+}
+
 .item-name {
   margin-top: 0.2em;
-  font-size:larger;
   font-weight: bold;
+  width:100%;
 }
 
 .item-description {
+  margin-top: 0.5em;
   font-style: italic;
 }
 
@@ -49,6 +55,7 @@ const routeToDetails = () => { return "/details/" + props.item.id };
 }
 
 .item-img {
-  width: 80%;
+  width: 90%;
+  aspect-ratio: 1;
 }
 </style>
