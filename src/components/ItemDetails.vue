@@ -3,6 +3,7 @@ import { onMounted, ref } from 'vue';
 import { Entity, getEntity, getEntityImage } from '../models/HomeBox/entity';
 import { useHead } from '@unhead/vue';
 import FieldGridRow from './widgets/FieldGridRow.vue';
+import { priceAsCurrency } from '../utilities/formatters.ts';
 
 const imageUrl = ref<string>()
 const props = defineProps<{ id: string }>()
@@ -36,6 +37,7 @@ onMounted(() => {
             <v-row>
               {{ item?.description }}
             </v-row>
+            <v-row class="item-price">{{ priceAsCurrency(item.purchasePrice) }}</v-row>
             <v-row>
               <v-container v-if="item.fields !== undefined && item.fields.length > 0">
                 <FieldGridRow
@@ -58,6 +60,12 @@ onMounted(() => {
 <style lang="css" scoped>
 .item-details {
   text-align: left;
+}
+
+.item-price {
+  padding: 0.5em;
+  font-weight: bold;
+  font-family: monospace;
 }
 
 .item-img {

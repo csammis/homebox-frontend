@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { Entity, getEntityImage } from '../../models/HomeBox/entity';
+import { firstSentence, priceAsCurrency } from '../../utilities/formatters';
 
 const imageUrl = ref<string>()
 const props = defineProps<{ item: Entity }>()
@@ -10,24 +11,6 @@ getEntityImage(props.item).then(function (response) {
 });
 
 const routeToDetails = () => { return "/details/" + props.item.id };
-
-//! Parse the first sentence out of the description to give a short blurb on the card
-function firstSentence(description: string) : string {
-  if (description.length < 2) {
-    return description
-  }
-  let stopIndex = description.indexOf(".")
-  if (stopIndex == -1) {
-    stopIndex = description.indexOf("!")
-    if (stopIndex == -1) {
-      stopIndex = description.indexOf("?")
-      if (stopIndex == -1) {
-        stopIndex = description.length - 2
-      }
-    }
-  }
-  return description.substring(0, stopIndex + 1)
-};
 </script>
 
 <template>
@@ -39,6 +22,7 @@ function firstSentence(description: string) : string {
       <img class="item-img" :src="imageUrl" :title="item.name" />
     </div>
     <div class="item-description">{{ firstSentence(item.description) }}</div>
+    <div class="item-price">{{ priceAsCurrency(item.purchasePrice) }}</div>
   </v-col>
 </template>
 <style lang="css" scoped>
@@ -47,7 +31,6 @@ function firstSentence(description: string) : string {
   border-radius: 5px;
   padding: 0.5em;
   margin: 1em;
-  aspect-ratio: 1;
 }
 
 .item-name {
@@ -58,7 +41,11 @@ function firstSentence(description: string) : string {
 
 .item-description {
   font-style: italic;
-  margin-bottom: 0.2em;
+}
+
+.item-price {
+  font-weight: bold;
+  font-family: monospace;
 }
 
 .item-img {
