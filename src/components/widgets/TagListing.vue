@@ -15,8 +15,8 @@ onMounted(() => {
 })
 </script>
 <template>
-  <v-container v-if="items.length > 0" class="items-container">
-    <v-row size="3">
+  <v-container fluid v-if="items.length > 0" class="items-container">
+    <v-row>
       <ItemCard
         v-for="item in items"
         :key="item.id"

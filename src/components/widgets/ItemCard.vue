@@ -14,11 +14,11 @@ const routeToDetails = () => { return "/details/" + props.item.id };
 </script>
 
 <template>
-  <v-col class="item-card">
+  <v-col class="item-card" cols="4">
     <RouterLink :to="routeToDetails()">
       <div class="item-name"><h2>{{ item.name }}</h2></div>
       <div class="item-img-container">
-        <img class="item-img" :src="imageUrl" :title="item.name" />
+        <v-img aspect-ratio="1/1" cover :src="imageUrl" :title="item.name" />
       </div>
     </RouterLink>
     <div class="item-description">{{ firstSentence(item.description) }}</div>
@@ -30,7 +30,6 @@ const routeToDetails = () => { return "/details/" + props.item.id };
   border: solid 2px var(--color-border);
   border-radius: 5px;
   padding: 0.5em;
-  margin: 1em;
 }
 
 .item-img-container {
