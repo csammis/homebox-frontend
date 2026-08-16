@@ -1,6 +1,7 @@
 import { Tag } from "./tag";
 import { EntityType } from "./entityType";
 import { Field } from "./field";
+import type { Attachment } from "./attachment";
 
 export class Entity {
   public id: string;
@@ -8,8 +9,6 @@ export class Entity {
   public name: string;
   public description: string;
   public quantity: number;
-  public insured: boolean;
-  public archived: boolean;
   public createdAt: Date;
   public updatedAt: Date;
   public purchasePrice: number;
@@ -20,6 +19,7 @@ export class Entity {
   public thumbnailId: string | undefined;
   public soldAt: Date | undefined;
   public fields: Field[] | undefined;
+  public attachments: Attachment[] | undefined;
 
   public constructor(
     id: string,
@@ -27,8 +27,6 @@ export class Entity {
     name: string,
     description: string,
     quantity: number,
-    insured: boolean,
-    archived: boolean,
     createdAt: Date,
     updatedAt: Date,
     purchasePrice: number,
@@ -39,14 +37,13 @@ export class Entity {
     thumbnailId: string | undefined,
     soldAt: Date | undefined,
     fields: Field[] | undefined,
+    attachments: Attachment[] | undefined,
   ) {
     this.id = id;
     this.assetId = assetId;
     this.name = name;
     this.description = description;
     this.quantity = quantity;
-    this.insured = insured;
-    this.archived = archived;
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
     this.purchasePrice = purchasePrice;
@@ -57,13 +54,37 @@ export class Entity {
     this.thumbnailId = thumbnailId;
     this.soldAt = soldAt;
     this.fields = fields;
+    this.attachments = attachments;
   }
 }
 
-export async function getEntityImage(entity: Entity): Promise<string> {
-  if (entity.imageId) {
+//! Fetch the thumbnail for the entity using as many fallbacks before fetching the main huge image as possible:
+//!  If the entity has a thumbnailId, fetch that
+//!  If the entity has a list of attachments, try to find the primary.
+//!   If the primary has a thumbnail, fetch that, otherwise fetch the primary
+//!  If the entity has an imageId (the big one), fetch that
+//!  Otherwise bail
+export async function getEntityThumbnail(entity: Entity): Promise<string> {
+  let idToFetch = "";
+  if (entity.thumbnailId) {
+    idToFetch = entity.thumbnailId;
+  } else if (entity.attachments) {
+    entity.attachments.forEach((element) => {
+      if (element.primary) {
+        if (element.thumbnail?.id) {
+          idToFetch = element.thumbnail.id;
+        } else {
+          idToFetch = element.id;
+        }
+      }
+    });
+  } else if (entity.imageId) {
+    idToFetch = entity.imageId;
+  }
+
+  if (idToFetch.length > 0) {
     const response = await fetch(
-      "/api/entities/" + entity.id + "/attachments/" + entity.imageId,
+      "/api/entities/" + entity.id + "/attachments/" + idToFetch,
     );
     return URL.createObjectURL(await response.blob());
   }

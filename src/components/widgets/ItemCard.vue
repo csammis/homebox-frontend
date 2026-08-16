@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { Entity, getEntityImage } from '../../models/HomeBox/entity';
+import { Entity, getEntityThumbnail} from '../../models/HomeBox/entity';
 import { firstSentence, priceAsCurrency } from '../../utilities/formatters';
 
 const imageUrl = ref<string>()
 const props = defineProps<{ item: Entity }>()
 
-getEntityImage(props.item).then(function (response) {
+getEntityThumbnail(props.item).then(function (response) {
   imageUrl.value = response
 });
 

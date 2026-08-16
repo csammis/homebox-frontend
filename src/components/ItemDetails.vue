@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { Entity, getEntity, getEntityImage } from '../models/HomeBox/entity';
+import { Entity, getEntity, getEntityThumbnail } from '../models/HomeBox/entity';
 import { useHead } from '@unhead/vue';
 import FieldGridRow from './widgets/FieldGridRow.vue';
 import { priceAsCurrency } from '../utilities/formatters.ts';
@@ -14,7 +14,7 @@ useHead({title: "Item Details"})
 onMounted(() => {
   getEntity(props.id).then(function (entityResponse) {
     item.value = entityResponse
-    getEntityImage(item.value).then(function (imageResponse) {
+    getEntityThumbnail(item.value).then(function (imageResponse) {
       imageUrl.value = imageResponse
     })
   })
