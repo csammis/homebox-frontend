@@ -34,15 +34,17 @@ onMounted(() => {
 <template>
   <div class="items">
     <div class="tag-name">{{ tag.name }}</div>
-      <div class="items-container-empty" v-if="items.length == 0">
-        Nothing here yet!
-      </div>
-      <div v-else class="items-container" ref="items-container">
-        <ItemCard
-          v-for="item in items"
-          :key="item.id"
-          :item="item"
-        />
+      <div ref="items-container">
+        <div class="items-container-empty" v-if="items.length == 0">
+          Nothing here yet!
+        </div>
+        <div v-else class="items-container">
+          <ItemCard
+            v-for="item in items"
+            :key="item.id"
+            :item="item"
+          />
+        </div>
       </div>
   </div>
 </template>
