@@ -1,6 +1,7 @@
 import "vuetify/styles";
 import "./style.css";
 import "@mdi/font/css/materialdesignicons.css";
+import "unfonts.css";
 
 import { createApp } from "vue";
 import { createHead } from "@unhead/vue/client";
