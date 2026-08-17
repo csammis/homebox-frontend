@@ -16,5 +16,5 @@ onMounted(() => {
 })
 </script>
 <template>
-  <v-carousel-item :src="thumbnailUrl" cover></v-carousel-item>
+  <v-carousel-item :src="thumbnailUrl"></v-carousel-item>
 </template>
