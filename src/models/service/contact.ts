@@ -15,17 +15,28 @@ export async function getRandomChallenge(): Promise<Challenge> {
 }
 
 export class ContactForm {
-  public firstName: string;
-  public lastName: string;
+  public name: string;
   public subject: string;
+  public message: string;
   public challengeKey: string;
   public challengeResponse: number;
 
   public constructor() {
-    this.firstName = "";
-    this.lastName = "";
+    this.name = "";
     this.subject = "";
+    this.message = "";
     this.challengeKey = "";
     this.challengeResponse = 0;
   }
+}
+
+export async function postContact(cf: ContactForm): Promise<boolean> {
+  const response = await fetch("/api/contact", {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+    body: JSON.stringify(cf),
+  });
+  return response.ok;
 }

@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 import requests
 from urllib.parse import urljoin
 from dataclasses import dataclass
@@ -8,32 +8,33 @@ app = Flask(__name__)
 app.config.from_prefixed_env()
 
 baseUrl = ""
-API_KEY = app.config["HOMEBOX_API_KEY"]
+HOMEBOX_API_KEY = app.config["HOMEBOX_API_KEY"]
+SMTP2GO_API_KEY = app.config["SMTP2GO_API_KEY"]
 
 @app.route('/api/entity/<id>')
 def getEntity(id: str):
-    r : requests.Response = requests.get(f"{baseUrl}/entities/{id}", headers={"Authorization" : API_KEY})
+    r : requests.Response = requests.get(f"{baseUrl}/entities/{id}", headers={"Authorization" : HOMEBOX_API_KEY})
     return r.json()
 
 @app.route('/api/entities/<tag>')
 def getEntities(tag: str):
-    r : requests.Response = requests.get(f"{baseUrl}/entities?tags={tag}", headers={"Authorization" : API_KEY})
+    r : requests.Response = requests.get(f"{baseUrl}/entities?tags={tag}", headers={"Authorization" : HOMEBOX_API_KEY})
     return r.json()
 
 @app.route('/api/tags')
 def getTags():
-    r : requests.Response = requests.get(f"{baseUrl}/tags", headers={"Authorization" : API_KEY})
+    r : requests.Response = requests.get(f"{baseUrl}/tags", headers={"Authorization" : HOMEBOX_API_KEY})
     return r.json()
 
 @app.route('/api/tags/<tag>')
 def getTag(tag: str):
-    r : requests.Response = requests.get(f"{baseUrl}/tags/{tag}", headers={"Authorization" : API_KEY})
+    r : requests.Response = requests.get(f"{baseUrl}/tags/{tag}", headers={"Authorization" : HOMEBOX_API_KEY})
     return r.json()
 
 @app.route('/api/entities/<entityId>/attachments/<attachmentId>')
 def getEntityAttachment(entityId: str, attachmentId: str):
     r : requests.Response = requests.get(f"{baseUrl}/entities/{entityId}/attachments/{attachmentId}",
-                                         headers={"Authorization": API_KEY})
+                                         headers={"Authorization": HOMEBOX_API_KEY})
     return r.content
 
 @dataclass
@@ -74,6 +75,44 @@ def getRandomChallenge():
             return ChallengeRequest(challenge.key, challenge.text)
     
     return jsonify(ChallengeRequest.fromChallenge(CHALLENGES[random.randint(0, len(CHALLENGES) - 1)]))
+
+@dataclass
+class ContactForm:
+    name: str
+    subject: str
+    message: str
+
+@app.post("/api/contact")
+def sendContactForm():
+    contactForm: dict = request.get_json()
+    print(contactForm)
+    challenge = [c for c in CHALLENGES if c.key == str(contactForm.get('challengeKey'))]
+    if len(challenge) > 0:
+        if challenge[0].value == int(str(contactForm.get('challengeResponse'))):
+            data: ContactForm = ContactForm(str(contactForm.get('name')),
+                                            str(contactForm.get('subject')),
+                                            str(contactForm.get('message')))
+
+            url = "https://api.smtp2go.com/v3/email/send"
+            payload = {
+                "fastaccept": True,
+                "to": ["courtney@prettygoodonpaper.com"],
+                "sender": "contact@mailer.prettygoodonpaper.com",
+                "subject": "New Contact Form",
+                "html_body": f"<p>Name: {data.name}<br/>Subject: {data.subject}<br/>Message: {data.message}"
+            }
+            headers = {
+                "accept": "application/json",
+                "Content-Type": "application/json",
+                "X-Smtp2go-Api-Key": f"{SMTP2GO_API_KEY}"
+            }
+
+            response = requests.post(url, json=payload, headers=headers)
+            if response.ok:
+                return ("Sent", 201)
+            else:
+                return ("SMTP relay failure", 400)
+    return ("Challenge failed", 400)
 
 if __name__ == "__main__":
     baseUrl = urljoin(app.config["HOMEBOX_URL"], "/api/v1")
