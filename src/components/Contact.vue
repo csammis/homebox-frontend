@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, shallowRef } from 'vue';
 import { ContactForm, getRandomChallenge, postContact } from '../models/service/contact';
 import { useHead } from '@unhead/vue';
 import { NameNotBlank, SubjectNotBlank } from '../utilities/formrules';
@@ -7,16 +7,36 @@ import { NameNotBlank, SubjectNotBlank } from '../utilities/formrules';
 const modelValue = ref(new ContactForm) // defineModel<ContactForm>({default: () => new ContactForm()});
 const challengeText = ref("")
 
+const form = ref()
+
+const snackbarOpen = shallowRef(false)
+const snackbarColor = shallowRef("")
+const snackbarText = shallowRef("")
+
 useHead({title: "Contact"})
 
+function showSnackbarError(message: string) {
+  snackbarColor.value = "error";
+  snackbarText.value = message;
+  snackbarOpen.value = true;
+}
+
 function submitModel() {
-  postContact(modelValue.value).then(success => {
-    if (success) {
-      alert("yay");
-    } else {
-      alert("no");
-    }
-  })
+  snackbarOpen.value = false;
+
+  const { isValid } = form.value.validate();
+
+  if (!isValid) {
+    showSnackbarError("All fields must be filled out to send a message.");
+  } else {
+    postContact(modelValue.value).then(success => {
+      if (success) {
+        alert("yay");
+      } else {
+        showSnackbarError("Your message was not able to be sent. Please try again in a few minutes.");
+      }
+    })
+  }
 }
 
 onMounted(() => {
@@ -29,7 +49,7 @@ onMounted(() => {
 </script>
 <template>
 <v-container fluid>
-  <v-form validate-on="submit" v-on:submit="submitModel()" >
+  <v-form validate-on="blur" ref="form" @submit.prevent>
   <v-row><div class="text-headline-large">Contact</div></v-row>
   <v-row density="comfortable">
     <v-col cols="6">
@@ -51,7 +71,7 @@ onMounted(() => {
   <v-row>
     <v-col cols="3">
       <span>Human check!</span><br />
-      {{ challengeText }}
+      <span class="text-body-large">{{ challengeText }}</span>
     </v-col>
     <v-col cols="1"></v-col>
     <v-col cols="2">
@@ -61,9 +81,15 @@ onMounted(() => {
   </v-row>
   <v-row>
     <v-col cols="6">
-      <v-btn class="mt-2" type="submit" block>Submit</v-btn>
+      <v-btn class="mt-2" @click="submitModel" block>Submit</v-btn>
     </v-col>
   </v-row>
 </v-form>
 </v-container>
+<v-snackbar v-model="snackbarOpen" timeout="5000" :color="snackbarColor">
+  {{ snackbarText }}
+  <template v-slot:actions>
+    <v-btn variant="text" @click="snackbarOpen = false"> Close </v-btn>
+  </template>
+</v-snackbar>
 </template>

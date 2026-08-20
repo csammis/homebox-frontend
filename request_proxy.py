@@ -49,7 +49,6 @@ CHALLENGES: list[Challenge] = [
     Challenge("45f26733-9187-4684-9730-2f4e1141a787", "What is three plus six?", 9),
     Challenge("59eb0eb0-4eba-496c-9634-1aa98d52bd45", "Six minus two equals what?", 4),
     Challenge("35aac75f-c8d2-4667-927f-cb40e493b666", "What is the number after two?", 3),
-
     Challenge("e9a3fe79-b916-4323-9632-2ecddece6bce", "Eleven minus three equals what?", 8),
     Challenge("254058cf-486d-4cee-81b7-b8ddefb6a917", "What is twelve divided by three?", 4),
     Challenge("7ba4194b-9ebf-44ed-bd4f-5cf833b4a018", "What is three minus two?", 1),
