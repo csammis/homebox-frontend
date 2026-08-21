@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref, shallowRef } from 'vue';
+import { nextTick, onMounted, ref, shallowRef } from 'vue';
 import { ContactForm, getRandomChallenge, postContact } from '../models/service/contact';
 import { useHead } from '@unhead/vue';
 import { NameNotBlank, SubjectNotBlank } from '../utilities/formrules';
@@ -13,6 +13,9 @@ const snackbarOpen = shallowRef(false)
 const snackbarColor = shallowRef("")
 const snackbarText = shallowRef("")
 
+const contactFormOpen = shallowRef(true)
+const submitting = shallowRef(false)
+
 useHead({title: "Contact"})
 
 function showSnackbarError(message: string) {
@@ -21,22 +24,25 @@ function showSnackbarError(message: string) {
   snackbarOpen.value = true;
 }
 
-function submitModel() {
+async function submitModel() {
   snackbarOpen.value = false;
+  submitting.value = true;
+  await nextTick();
 
   const { isValid } = form.value.validate();
 
-  if (!isValid) {
+  if (isValid === false) {
     showSnackbarError("All fields must be filled out to send a message.");
   } else {
     postContact(modelValue.value).then(success => {
       if (success) {
-        alert("yay");
+        contactFormOpen.value = false;
       } else {
         showSnackbarError("Your message was not able to be sent. Please try again in a few minutes.");
       }
     })
   }
+  submitting.value = false;
 }
 
 onMounted(() => {
@@ -48,7 +54,7 @@ onMounted(() => {
 })
 </script>
 <template>
-<v-container fluid>
+<v-container fluid v-if="contactFormOpen">
   <v-form validate-on="blur" ref="form" @submit.prevent>
   <v-row><div class="text-headline-large">Contact</div></v-row>
   <v-row density="comfortable">
@@ -81,10 +87,20 @@ onMounted(() => {
   </v-row>
   <v-row>
     <v-col cols="6">
-      <v-btn class="mt-2" @click="submitModel" block>Submit</v-btn>
+      <v-btn class="mt-2" @click="submitModel" block>
+        <span v-if="submitting === false">Submit</span>
+        <v-progress-circular v-else indeterminate color="primary"></v-progress-circular>
+      </v-btn>
     </v-col>
   </v-row>
 </v-form>
+</v-container>
+<v-container fluid v-else>
+  <v-row><div class="text-headline-large">Thanks!</div></v-row>
+  <v-row><span>Your message has been sent.</span></v-row>
+    <v-row>
+      <RouterLink to="/"><< Go to item listings</RouterLink>
+    </v-row>
 </v-container>
 <v-snackbar v-model="snackbarOpen" timeout="5000" :color="snackbarColor">
   {{ snackbarText }}
