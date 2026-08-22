@@ -1,55 +1,47 @@
-ARG NODE_VERSION=23.11.0-alpine
-ARG PYTHON_VERSION=3.11.7
-ARG NGINX_VERSION=alpine3.22
-ARG APP_UID=1000
-ARG APP_GID=1000
-ARG FLASK_DEBUG="false"
+ARG NODE_VERSION=24.19-alpine
+ARG PYTHON_VERSION=3.11-alpine3.23
+ARG NGINX_VERSION=alpine3.24
 
-FROM node:${NODE_VERSION} as node-builder
+FROM node:${NODE_VERSION} AS node-builder
 WORKDIR /app
 COPY package.json package-lock.json* ./
 RUN --mount=type=cache,target=/root/.npm npm ci
 COPY . .
 RUN npm run build
 
-FROM python:${PYTHON_VERSION} as python-builder
+FROM python:${PYTHON_VERSION} AS python-builder
 
 WORKDIR /app
-RUN groupadd -g "${APP_GID}" python \
-  && useradd --create-home --no-log-init -u "${APP_UID}" -g "${APP_GID}" python \
-  && chown python:python -R /app
 
-USER python
-
-# Install uv and initialize an environment for the Flask proxy in /home/python/.local
+# Install uv and initialize an environment for the Flask proxy in /opt/python/.local
 COPY --from=ghcr.io/astral-sh/uv:0.11.32 /uv /uvx /usr/local/bin/
-COPY --chown=python:python pyproject.toml uv.lock* ./
+COPY pyproject.toml uv.lock* ./
 
 ENV PYTHONUNBUFFERED="true" \
   PYTHONPATH="." \
   UV_COMPILE_BYTECODE=1 \
-  UV_PROJECT_ENVIRONMENT="/home/python/.local" \
-  PATH="${PATH}:/home/python/.local/bin" \
+  UV_PROJECT_ENVIRONMENT="/opt/python/.local" \
+  PATH="${PATH}:/opt/python/.local/bin" \
   USER="python"
 
 RUN uv sync --frozen --no-install-project
 
-FROM ngnixinc:${NGINX_VERSION} as runner
+FROM nginx:${NGINX_VERSION} AS runner
 
-USER python
-COPY --chown=python:python --from=python-builder /home/python/.local /home/python/.local
+COPY --from=python-builder /opt/python/.local /opt/python/.local
 COPY --from=python-builder /usr/local/bin/uv /usr/local/bin/uvx /usr/local/bin/
+COPY --from=node-builder /app/request_proxy.py /opt/python
 
 USER nginx
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY --chown=nginx:nginx --from=node-builder /app/dist /usr/share/nginx/html
 
-ENV FLASK_DEBUG="${FLASK_DEBUG}" \
+ENV FLASK_DEBUG="false" \
   FLASK_SKIP_DOTENV="true" \
   PYTHONUNBUFFERED="true" \
   PYTHONPATH="." \
-  UV_PROJECT_ENVIRONMENT="/home/python/.local" \
-  PATH="${PATH}:/home/python/.local/bin"
+  UV_PROJECT_ENVIRONMENT="/opt/python/.local" \
+  PATH="${PATH}:/opt/python/.local/bin"
 
 EXPOSE 8080
 
