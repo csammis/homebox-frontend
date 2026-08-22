@@ -1,7 +1,7 @@
 [project]
 name = "homebox-frontend"
 version = "0.1.0"
-description = "Add your description here"
+description = "A Flask server proxy for requesting items stored in HomeBox for display in a for-sale gallery format"
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
