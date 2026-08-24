@@ -1,5 +1,4 @@
 ARG NODE_VERSION=24.19-alpine
-ARG PYTHON_VERSION=3.11-alpine3.23
 ARG NGINX_VERSION=alpine3.24
 
 FROM node:${NODE_VERSION} AS node-builder
