@@ -8,4 +8,5 @@ dist/
 .DS_Store
 notes.txt
 *.code-workspace
+
 README.md
