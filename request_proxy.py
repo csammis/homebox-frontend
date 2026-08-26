@@ -5,7 +5,7 @@ from dataclasses import dataclass
 import random 
 
 app = Flask(__name__)
-app.config.from_prefixed_env(prefix="HBFE_")
+app.config.from_prefixed_env(prefix="HBFE")
 
 HOMEBOX_API_KEY: str = app.config["HOMEBOX_API_KEY"]
 

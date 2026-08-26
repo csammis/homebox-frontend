@@ -1,6 +1,7 @@
-#!/bin/bash
+#!/bin/sh
 
-uv run /opt/python/request_proxy.py &
+cd /opt/python
+uv run request_proxy.py &
 
 nginx -c /etc/nginx/nginx.conf -g 'daemon off;' &
 
