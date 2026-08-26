@@ -1,7 +1,7 @@
 #!/bin/sh
 
 cd /opt/python
-uv run request_proxy.py &
+uv run gunicorn -c python:request_proxy.gunicorn request_proxy.app &
 
 nginx -c /etc/nginx/nginx.conf -g 'daemon off;' &
 
