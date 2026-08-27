@@ -28,3 +28,4 @@ __pycache__
 notes.txt
 compose.override.yaml
 docker-compose.override.yaml
+.env
