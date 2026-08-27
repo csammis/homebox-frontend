@@ -1,0 +1,12 @@
+node_modules/
+__pycache__/
+dist/
+.venv/
+.vscode/
+.git/
+
+.DS_Store
+notes.txt
+*.code-workspace
+
+README.md

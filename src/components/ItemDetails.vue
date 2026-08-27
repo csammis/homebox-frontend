@@ -32,7 +32,9 @@ onMounted(() => {
           <v-row>
             <div v-html="htmlizeLineBreaks(item?.description)"></div>
           </v-row>
-          <v-row class="item-price">{{ priceAsCurrency(item.purchasePrice) }}</v-row>
+          <v-row>
+            <v-col class="item-price">{{ priceAsCurrency(item.purchasePrice) }}</v-col>
+          </v-row>
           <v-row>
             <v-container v-if="item.fields !== undefined && item.fields.length > 0">
               <FieldGridRow
@@ -42,13 +44,22 @@ onMounted(() => {
               />
             </v-container>
           </v-row>
+          <v-row>
+            <v-col cols="2"></v-col>
+            <v-col class="d-flex justify-center align-center">
+              <v-btn>
+                <RouterLink style="text-decoration: none; color: inherit;" class="mt-4" to="/contact">Send a message</RouterLink>
+              </v-btn>
+            </v-col>
+            <v-col cols="2"></v-col>
+          </v-row>
         </v-container>
       </v-col>
     </v-row>
+    <v-row>
+      <RouterLink to="/"><< Go to item listings</RouterLink>
+    </v-row>
   </v-container>
-<div>
-  <RouterLink to="/"><< Go to item listings</RouterLink>
-</div>
 </template>
 <style lang="css" scoped>
 .item-details {

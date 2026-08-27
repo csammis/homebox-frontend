@@ -5,36 +5,45 @@ from dataclasses import dataclass
 import random 
 
 app = Flask(__name__)
-app.config.from_prefixed_env()
+app.config.from_prefixed_env(prefix="HBFE")
 
-baseUrl = ""
-HOMEBOX_API_KEY = app.config["HOMEBOX_API_KEY"]
-SMTP2GO_API_KEY = app.config["SMTP2GO_API_KEY"]
+HOMEBOX_API_KEY: str = app.config["HOMEBOX_API_KEY"]
+
+SMTP2GO_API_KEY: str = app.config["SMTP2GO_API_KEY"]
+CONTACT_EMAIL_TO: str = app.config["CONTACT_EMAIL_TO"]
+CONTACT_EMAIL_FROM: str = app.config["CONTACT_EMAIL_FROM"]
+CONTACT_EMAIL_SUBJECT: str = app.config["CONTACT_EMAIL_SUBJECT"]
+
+def createRequest(endpoint: str) -> requests.Response:
+    """ Build a GET request to the specified HomeBox API endpoint"""
+    if endpoint.startswith("/"):
+        endpoint = endpoint[1:]
+    target: str = urljoin(app.config["HOMEBOX_URL"], f"/api/v1/{endpoint}")
+    return requests.get(target, headers={"Authorization" : HOMEBOX_API_KEY})
 
 @app.route('/api/entity/<id>')
 def getEntity(id: str):
-    r : requests.Response = requests.get(f"{baseUrl}/entities/{id}", headers={"Authorization" : HOMEBOX_API_KEY})
+    r : requests.Response = createRequest(f"/entities/{id}")
     return r.json()
 
 @app.route('/api/entities/<tag>')
 def getEntities(tag: str):
-    r : requests.Response = requests.get(f"{baseUrl}/entities?tags={tag}", headers={"Authorization" : HOMEBOX_API_KEY})
+    r : requests.Response = createRequest(f"/entities?tags={tag}")
     return r.json()
 
 @app.route('/api/tags')
 def getTags():
-    r : requests.Response = requests.get(f"{baseUrl}/tags", headers={"Authorization" : HOMEBOX_API_KEY})
+    r : requests.Response = createRequest(f"/tags")
     return r.json()
 
 @app.route('/api/tags/<tag>')
 def getTag(tag: str):
-    r : requests.Response = requests.get(f"{baseUrl}/tags/{tag}", headers={"Authorization" : HOMEBOX_API_KEY})
+    r : requests.Response = createRequest(f"/tags/{tag}")
     return r.json()
 
 @app.route('/api/entities/<entityId>/attachments/<attachmentId>')
 def getEntityAttachment(entityId: str, attachmentId: str):
-    r : requests.Response = requests.get(f"{baseUrl}/entities/{entityId}/attachments/{attachmentId}",
-                                         headers={"Authorization": HOMEBOX_API_KEY})
+    r : requests.Response = createRequest(f"/entities/{entityId}/attachments/{attachmentId}")
     return r.content
 
 @dataclass
@@ -95,9 +104,9 @@ def sendContactForm():
             url = "https://api.smtp2go.com/v3/email/send"
             payload = {
                 "fastaccept": True,
-                "to": ["courtney@prettygoodonpaper.com"],
-                "sender": "contact@mailer.prettygoodonpaper.com",
-                "subject": "New Contact Form",
+                "to": [CONTACT_EMAIL_TO],
+                "sender": CONTACT_EMAIL_FROM,
+                "subject": CONTACT_EMAIL_SUBJECT,
                 "html_body": f"<p>Name: {data.name}<br/>Subject: {data.subject}<br/>Message: {data.message}"
             }
             headers = {
@@ -114,5 +123,4 @@ def sendContactForm():
     return ("Challenge failed", 400)
 
 if __name__ == "__main__":
-    baseUrl = urljoin(app.config["HOMEBOX_URL"], "/api/v1")
     app.run()
