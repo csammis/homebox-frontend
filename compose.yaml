@@ -5,13 +5,11 @@ services:
     environment:
       # HomeBox server setup
       - HBFE_HOMEBOX_URL=http://homebox  # The URL of the HomeBox server
-      - HBFE_HOMEBOX_API_KEY=supersecret # A HomeBox API key which is authorized to fetch from the server
+      #- HBFE_HOMEBOX_API_KEY=supersecret # A HomeBox API key which is authorized to fetch from the server
 
       # Contact form setup
       - HBFE_CONTACT_EMAIL_FROM=         # Sending address must be authorized with the SMTP relay service
       - HBFE_CONTACT_EMAIL_TO=           # Contact form recepient
       - HBFE_CONTACT_EMAIL_SUBJECT=      # Email subject for contact form submissions
-      - HBFE_SMTP2GO_API_KEY=            # SMTP2GO relay service API key
-    ports:
-      - 8080:8080
+      #- HBFE_SMTP2GO_API_KEY=            # SMTP2GO relay service API key
 
