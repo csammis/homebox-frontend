@@ -27,6 +27,6 @@ ENV FLASK_DEBUG="false" \
   UV_PROJECT_ENVIRONMENT="/opt/python/.local" \
   PATH="${PATH}:/opt/python/.local/bin"
 
-EXPOSE 8080
+EXPOSE 80
 
 ENTRYPOINT ["/opt/start.sh"]
