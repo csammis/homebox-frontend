@@ -1,3 +1,4 @@
+import logging
 from flask import Flask, jsonify, request
 import requests
 from urllib.parse import urljoin
@@ -19,6 +20,7 @@ def createRequest(endpoint: str) -> requests.Response:
     if endpoint.startswith("/"):
         endpoint = endpoint[1:]
     target: str = urljoin(app.config["HOMEBOX_URL"], f"/api/v1/{endpoint}")
+    app.logger.debug(f"Built request to {target}")
     return requests.get(target, headers={"Authorization" : HOMEBOX_API_KEY})
 
 @app.route('/api/entity/<id>')
@@ -124,3 +126,8 @@ def sendContactForm():
 
 if __name__ == "__main__":
     app.run()
+else:
+    # This is being executed through gunicorn so the logger handlers need to be wired up
+    gunicorn_logger = logging.getLogger("gunicorn.error")
+    app.logger.handlers = gunicorn_logger.handlers
+    app.logger.setLevel(gunicorn_logger.level)
