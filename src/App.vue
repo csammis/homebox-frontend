@@ -1,8 +1,11 @@
+<script setup lang="ts">
+import bannerUrl from '@/assets/pgop-banner.png'
+</script>
 <template>
   <div class="banner">
     <header>
       <div class="title">
-        <img src="@/assets/pgop-logo.svg" width="500px" title="Pretty Good On Paper logo" />
+        <v-img :src="bannerUrl" width="fit-content"></v-img>
       </div>
     </header>
   </div>
