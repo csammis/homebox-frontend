@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { Entity, getEntityThumbnail} from '../../models/HomeBox/entity';
 import { firstSentence, priceAsCurrency } from '../../utilities/formatters';
+import { useDisplay } from 'vuetify';
 
 const imageUrl = ref<string>()
 const props = defineProps<{ item: Entity }>()
@@ -12,10 +13,16 @@ getEntityThumbnail(props.item).then(function (response) {
 }));
 
 const routeToDetails = () => { return "/details/" + props.item.id };
-</script>
 
+const { xs } = useDisplay();
+
+const cols = computed(() => {
+  return xs.value ? 6 : 4;
+})
+
+</script>
 <template>
-  <v-col class="item-card" cols="4">
+  <v-col class="item-card" :cols="cols">
     <RouterLink :to="routeToDetails()">
       <div class="text-title-large w-100 mt-2">{{ item.name }}</div>
       <div class="d-flex justify-center">
