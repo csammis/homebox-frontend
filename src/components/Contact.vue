@@ -99,7 +99,7 @@ onMounted(() => {
   <v-row><div class="text-headline-large">Thanks!</div></v-row>
   <v-row><span>Your message has been sent.</span></v-row>
     <v-row>
-      <RouterLink to="/"><< Go to item listings</RouterLink>
+      <RouterLink to="/"><< Go to inventory listings</RouterLink>
     </v-row>
 </v-container>
 <v-snackbar v-model="snackbarOpen" timeout="5000" :color="snackbarColor">

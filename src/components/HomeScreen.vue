@@ -6,7 +6,7 @@ import TagListing from './widgets/TagListing.vue';
 
 const tags = ref<Tag[]>()
 
-useHead({title: "Home"})
+useHead({title: "Inventory"})
 
 onMounted(function() {
   getTags().then(function (response) {
