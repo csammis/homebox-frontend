@@ -35,6 +35,8 @@
   --vt-teal-accent-2: #64ffda;
   --vt-teal-accent-3: #1de9b6;
   --vt-teal-accent-4: #00bfa5;
+
+  --vt-background-pgop: #B8E5E6;
 }
 
 /* semantic color variables for this project */
@@ -49,7 +51,7 @@
   --color-heading: var(--vt-c-text-light-1);
   --color-text: var(--vt-c-text-light-1);
 
-  --color-banner: var(--vt-teal);
+  --color-banner: var(--vt-background-pgop);
   --section-gap: 160px;
 }
 
