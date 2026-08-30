@@ -48,7 +48,7 @@ onMounted(() => {
             <v-col cols="2"></v-col>
             <v-col class="d-flex justify-center align-center">
               <v-btn>
-                <RouterLink style="text-decoration: none; color: inherit;" class="mt-4" to="/contact">Send a message</RouterLink>
+                <RouterLink style="text-decoration: none; color: inherit;" to="/contact">Send a message</RouterLink>
               </v-btn>
             </v-col>
             <v-col cols="2"></v-col>
