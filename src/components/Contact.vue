@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { nextTick, onMounted, ref, shallowRef } from 'vue';
+import { computed, nextTick, onMounted, ref, shallowRef } from 'vue';
 import { ContactForm, getRandomChallenge, postContact } from '../models/service/contact';
 import { useHead } from '@unhead/vue';
 import { NameNotBlank, SubjectNotBlank } from '../utilities/formrules';
+import { useDisplay } from 'vuetify';
 
 const modelValue = ref(new ContactForm) // defineModel<ContactForm>({default: () => new ContactForm()});
 const challengeText = ref("")
@@ -52,41 +53,48 @@ onMounted(() => {
   }
 )
 })
+
+const { xs } = useDisplay();
+
+const cols = computed(() => {
+  return xs.value ? [12, 6] : [6, 3];
+})
+
+
 </script>
 <template>
 <v-container fluid v-if="contactFormOpen">
   <v-form validate-on="blur" ref="form" @submit.prevent>
   <v-row><div class="text-headline-large">Contact</div></v-row>
   <v-row density="comfortable">
-    <v-col cols="6">
+    <v-col :cols="cols[0]">
       <v-text-field density="comfortable" label="Name"
                     :rules="NameNotBlank" v-model="modelValue.name"></v-text-field>
     </v-col>
   </v-row>
   <v-row>
-    <v-col cols="6">
+    <v-col :cols="cols[0]">
       <v-text-field density="comfortable" label="Subject"
                     :rules="SubjectNotBlank" v-model="modelValue.subject"></v-text-field>
     </v-col>
   </v-row>
   <v-row>
-    <v-col cols="6">
+    <v-col :cols="cols[0]">
       <v-textarea label="Message" counter="250" v-model="modelValue.message"></v-textarea>
     </v-col>
   </v-row>
   <v-row>
-    <v-col cols="3">
+    <v-col :cols="cols[1]">
       <span>Human check!</span><br />
       <span class="text-body-large">{{ challengeText }}</span>
     </v-col>
-    <v-col cols="1"></v-col>
-    <v-col cols="2">
+    <v-col :cols="cols[1]">
       <input type="hidden" name="challengeKey" :value="modelValue.challengeKey">
       <v-number-input density="comfortable" :min="0" v-model="modelValue.challengeResponse"></v-number-input>
     </v-col>
   </v-row>
   <v-row>
-    <v-col cols="6">
+    <v-col :cols="cols[0]">
       <v-btn class="mt-2" @click="submitModel" block>
         <span v-if="submitting === false">Submit</span>
         <v-progress-circular v-else indeterminate color="primary"></v-progress-circular>
