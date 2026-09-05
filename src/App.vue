@@ -5,7 +5,7 @@ import bannerUrl from '@/assets/pgop-banner.png'
   <div class="banner">
     <header>
       <div class="title">
-        <a href="https://prettygoodonpaper.com">
+        <a href="https://prettygoodonpaper.com" aria-label="Pretty Good On Paper logo">
           <v-img :src="bannerUrl" width="fit-content"></v-img>
         </a>
       </div>
