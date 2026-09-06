@@ -16,11 +16,10 @@ const storage = hbfeStore()
 useHead({title: "Inventory"})
 
 function loadAndSortEntities() {
-  console.log("loading and sorting ")
   if (tag.value) {
     getEntitiesByTag(tag.value).then(async function (resource) {
       items.value = sortItemsByOption(resource.items, SortOptions[storage.sortIndex])
-    })
+    }).catch(() => { console.log("No data") })
   }
 }
 
@@ -32,16 +31,16 @@ onMounted(function() {
   getTagByName(props.name).then(function (response) {
     tag.value = response
     loadAndSortEntities()
-  });
+  }).catch(() => { console.log("No data")});
 });
 </script>
 <template>
-  <v-container v-if="tag">
+  <v-container v-if="tag && items.length > 0">
     <v-container fluid class="d-flex justify-right">
       <v-select density="compact" v-model="storage.sortIndex" :items="SortOptions" item-title="name" prepend-icon="mdi-sort">
       </v-select>
     </v-container>
-    <v-container fluid v-if="items.length > 0" class="items-container">
+    <v-container fluid class="items-container">
       <v-row>
         <ItemCard
           v-for="item in items"
@@ -50,5 +49,8 @@ onMounted(function() {
         />
       </v-row>
     </v-container>
+  </v-container>
+  <v-container v-else class="d-flex justify-center">
+    No items to show
   </v-container>
 </template>
