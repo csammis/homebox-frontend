@@ -1,13 +1,15 @@
-import json
 import logging
 from flask import Flask, jsonify, request
 import requests
 from urllib.parse import urljoin
 from dataclasses import dataclass
 import random 
+from typing import List
 
 app = Flask(__name__)
 app.config.from_prefixed_env(prefix="HBFE")
+
+ALLOWLISTED_TAGS: List[str] = ["vintage", "hybrid"]
 
 HOMEBOX_API_KEY: str = app.config["HOMEBOX_API_KEY"]
 
@@ -31,19 +33,24 @@ def getEntity(id: str):
 
 @app.route('/api/entities/<tag>')
 def getEntities(tag: str):
+    # cstodo: information leak here, check that the tag ID is in the allowlist
     r : requests.Response = createRequest(f"/entities?tags={tag}")
     return r.json()
 
-@app.route('/api/tags')
-def getTags():
-    r : requests.Response = createRequest(f"/tags")
-    tags = r.json()
-    return [tag for tag in tags if tag["name"] == "Vintage"]
+@app.route('/api/tagnames')
+def getTagNames():
+    return [s.lower() for s in ALLOWLISTED_TAGS]
 
 @app.route('/api/tags/<tag>')
 def getTag(tag: str):
-    r : requests.Response = createRequest(f"/tags/{tag}")
-    return r.json()
+    if tag not in getTagNames():
+        return ("Not permitted", 403)
+    r : requests.Response = createRequest(f"/tags")
+    tags = r.json()
+    filtered_tags = [t for t in tags if t["name"].lower() == tag.lower()]
+    if len(filtered_tags):
+        return filtered_tags[0]
+    return ("Not found", 404)
 
 @app.route('/api/entities/<entityId>/attachments/<attachmentId>')
 def getEntityAttachment(entityId: str, attachmentId: str):
