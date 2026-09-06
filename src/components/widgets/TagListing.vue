@@ -1,18 +1,25 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, watch } from 'vue'
 import { getEntitiesByTag } from '../../models/HomeBox/entities.ts';
 import { Entity } from '../../models/HomeBox/entity.ts';
 import { Tag } from '../../models/HomeBox/tag.ts';
 import ItemCard from '../widgets/ItemCard.vue';
+import { sortItemsByOption, SortOptions } from '../../utilities/sorting.ts';
 
 const items = ref<Entity[]>([])
-const props = defineProps<{ tag: Tag }>()
+const props = defineProps<{ tag: Tag, sortIndex: number }>()
 
-onMounted(() => {
+function loadAndSortEntities() {
+  console.log("loading and sorting ")
+  console.log(props.sortIndex)
   getEntitiesByTag(props.tag).then(async function (resource) {
-    items.value = resource.items
+    items.value = sortItemsByOption(resource.items, SortOptions[props.sortIndex])
   })
-})
+}
+
+watch(() => props.sortIndex, (_, __) => {
+  loadAndSortEntities()
+}, {immediate: true})
 </script>
 <template>
   <v-container fluid v-if="items.length > 0" class="items-container">
