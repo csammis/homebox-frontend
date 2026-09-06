@@ -13,12 +13,12 @@ export class Tag {
   }
 }
 
-export async function getTags(): Promise<Tag[]> {
-  const response = await fetch("/api/tags");
-  return (await response.json()) as Tag[];
+export async function getAllowedTagNames(): Promise<string[]> {
+  const response = await fetch("/api/tagnames");
+  return (await response.json()) as string[];
 }
 
-export async function getTagById(tag: Tag): Promise<Tag> {
-  const response = await fetch("/api/tags/" + tag.id);
-  return (await response.json()) as Tag;
+export async function getTagByName(name: string): Promise<Tag[]> {
+  const response = await fetch("/api/tags/" + name);
+  return (await response.json()) as Tag[];
 }

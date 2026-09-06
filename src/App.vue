@@ -1,5 +1,17 @@
 <script setup lang="ts">
 import bannerUrl from '@/assets/pgop-banner.png'
+import { onMounted, ref } from 'vue';
+import { getAllowedTagNames } from './models/HomeBox/tag';
+import { capitalize } from './utilities/formatters';
+
+const tagNames = ref<string[]>([])
+const routeToListing = (name: string) => { return "/listing/" + name.toLowerCase() };
+
+onMounted(() => {
+  getAllowedTagNames().then((response) => {
+    tagNames.value = response
+  })
+})
 </script>
 <template>
   <div class="banner">
@@ -20,7 +32,10 @@ import bannerUrl from '@/assets/pgop-banner.png'
           </v-btn>
         </a>
         <v-btn prepend-icon="mdi-format-list-text" rounded="xl" class="mx-4 pa-3">
-          <RouterLink style="text-decoration: none; color: inherit;" to="/">Listings</RouterLink>
+          <RouterLink style="text-decoration: none; color: inherit;" to="/">All Listings</RouterLink>
+        </v-btn>
+        <v-btn v-for="name in tagNames" prepend-icon="mdi-fountain-pen-tip" rounded="xl" class="mx-4 pa-3">
+          <RouterLink style="text-decoration: none; color: inherit;" :to="routeToListing(name)">{{ capitalize(name) }}</RouterLink>
         </v-btn>
         <v-btn prepend-icon="mdi-mail" rounded="xl" class="mx-4 pa-3">
           <RouterLink style="text-decoration: none; color: inherit;" to="/contact">Contact</RouterLink>
