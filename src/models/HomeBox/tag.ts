@@ -18,7 +18,7 @@ export async function getAllowedTagNames(): Promise<string[]> {
   return (await response.json()) as string[];
 }
 
-export async function getTagByName(name: string): Promise<Tag> {
+export async function getTagByName(name: string): Promise<Tag[]> {
   const response = await fetch("/api/tags/" + name);
-  return (await response.json()) as Tag;
+  return (await response.json()) as Tag[];
 }

@@ -1,14 +1,15 @@
 <script setup lang="ts">
-import { onMounted, ref, watch } from 'vue';
+import { ref, watch } from 'vue';
 import { getTagByName, Tag } from '../models/HomeBox/tag.ts';
 import { useHead } from '@unhead/vue';
 import { sortItemsByOption, SortOptions } from '../utilities/sorting.ts';
 import { hbfeStore } from '../utilities/store.ts';
-import { getEntitiesByTag } from '../models/HomeBox/entities.ts';
+import { Entities, getEntitiesByTag } from '../models/HomeBox/entities.ts';
 import type { Entity } from '../models/HomeBox/entity.ts';
 import ItemCard from './widgets/ItemCard.vue';
+import { capitalize } from '../utilities/formatters.ts';
 
-const tag = ref<Tag>()
+const tags = ref<Tag[]>()
 const items = ref<Entity[]>([])
 const props = defineProps<{ name: string }>()
 const storage = hbfeStore()
@@ -16,10 +17,20 @@ const storage = hbfeStore()
 useHead({title: "Inventory"})
 
 function loadAndSortEntities() {
-  if (tag.value) {
-    getEntitiesByTag(tag.value).then(async function (resource) {
-      items.value = sortItemsByOption(resource.items, SortOptions[storage.sortIndex])
-    }).catch(() => { console.log("No data") })
+  if (tags.value) {
+    let allItems: Entity[] = [];
+    let allFetches: Promise<Entities>[] = []
+    tags.value.forEach(tag => {
+      allFetches = allFetches.concat(getEntitiesByTag(tag))
+    })
+
+    Promise.all(allFetches).then((responses) => {
+      responses.forEach((response) => {
+        allItems = allItems.concat(response.items)
+      })
+    }).finally(() => {
+      items.value = sortItemsByOption(allItems, SortOptions[storage.sortIndex])
+    });
   }
 }
 
@@ -27,19 +38,30 @@ watch(() => storage.sortIndex, (_, __) => {
   loadAndSortEntities()
 }, {immediate: true})
 
-onMounted(function() {
+watch(() => props.name, (_, __) => {
   getTagByName(props.name).then(function (response) {
-    tag.value = response
+    tags.value = response
     loadAndSortEntities()
-  }).catch(() => { console.log("No data")});
-});
+  }).catch(() => { console.log("No data from " + props.name)});
+}, {immediate: true });
+
+function headerFromName() {
+  if (props.name.toLowerCase() == "all") {
+    return "All Listings"
+  } else {
+    return capitalize(props.name)
+  }
+}
 </script>
 <template>
-  <v-container v-if="tag && items.length > 0">
-    <v-container fluid class="d-flex justify-right">
-      <v-select density="compact" v-model="storage.sortIndex" :items="SortOptions" item-title="name" prepend-icon="mdi-sort">
-      </v-select>
-    </v-container>
+  <v-container fluid class="d-flex justify-left pa-0">
+    <h1 class="ma-0">{{  headerFromName() }}</h1>
+  </v-container>
+  <v-container fluid class="d-flex justify-right">
+    <v-select density="compact" v-model="storage.sortIndex" :items="SortOptions" item-title="name" prepend-icon="mdi-sort">
+    </v-select>
+  </v-container>
+  <v-container fluid v-if="items.length > 0">
     <v-container fluid class="items-container">
       <v-row>
         <ItemCard

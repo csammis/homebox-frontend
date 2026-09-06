@@ -43,13 +43,17 @@ def getTagNames():
 
 @app.route('/api/tags/<tag>')
 def getTag(tag: str):
-    if tag not in getTagNames():
+    if tag not in getTagNames() and tag != 'all':
         return ("Not found", 404)
     r : requests.Response = createRequest(f"/tags")
     tags = r.json()
-    filtered_tags = [t for t in tags if t["name"].lower() == tag.lower()]
+    if tag == 'all':
+        tag_filter = getTagNames()
+    else:
+        tag_filter = [tag.lower()]
+    filtered_tags = [t for t in tags if t["name"].lower() in tag_filter]
     if len(filtered_tags):
-        return filtered_tags[0]
+        return filtered_tags
     return ("Not found", 404)
 
 @app.route('/api/entities/<entityId>/attachments/<attachmentId>')
