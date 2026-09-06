@@ -44,7 +44,7 @@ def getTagNames():
 @app.route('/api/tags/<tag>')
 def getTag(tag: str):
     if tag not in getTagNames():
-        return ("Not permitted", 403)
+        return ("Not found", 404)
     r : requests.Response = createRequest(f"/tags")
     tags = r.json()
     filtered_tags = [t for t in tags if t["name"].lower() == tag.lower()]
