@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import bannerUrl from '@/assets/pgop-banner.png'
-
 </script>
 <template>
   <div class="banner">
