@@ -14,13 +14,7 @@ useHead({title: "Inventory"})
 
 onMounted(function() {
   getTags().then(function (response) {
-    let wantedTags: Tag[] = []
-    response.forEach((tag) => { 
-      if (tag.parentId == "472b43c2-c880-4a82-8065-5a51239916b6") {
-        wantedTags.push(tag)
-      }
-    });
-    tags.value = wantedTags 
+    tags.value = response
   });
 });
 </script>

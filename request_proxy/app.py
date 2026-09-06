@@ -1,3 +1,4 @@
+import json
 import logging
 from flask import Flask, jsonify, request
 import requests
@@ -36,7 +37,8 @@ def getEntities(tag: str):
 @app.route('/api/tags')
 def getTags():
     r : requests.Response = createRequest(f"/tags")
-    return r.json()
+    tags = r.json()
+    return [tag for tag in tags if tag["name"] == "Vintage"]
 
 @app.route('/api/tags/<tag>')
 def getTag(tag: str):

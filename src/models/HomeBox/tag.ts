@@ -13,7 +13,11 @@ export class Tag {
   }
 }
 
-export async function getTags(): Promise<Tag[]> {
+export async function getTags(filter?: string): Promise<Tag[]> {
+  let query = "/api/tags";
+  if (filter) {
+    query += "?" + filter;
+  }
   const response = await fetch("/api/tags");
   return (await response.json()) as Tag[];
 }
