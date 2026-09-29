@@ -23,13 +23,13 @@ onMounted(() => {
   </div>
   <v-container v-else fluid class="w-100">
     <v-row>
-      <h1>{{ item?.name }}</h1>
+      <h1 class="my-0 my-sm-4">{{ item?.name }}</h1>
     </v-row>
-    <v-row>
-      <v-col>
+    <v-row class="my-0">
+      <v-col cols="12" md="6">
         <AttachmentCarousel :item="item" />
       </v-col>
-      <v-col>
+      <v-col cols="12" md="6">
         <v-container>
           <v-row>
             <div v-html="htmlizeLineBreaks(item?.description)"></div>
