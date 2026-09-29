@@ -22,12 +22,14 @@ onMounted(() => {
     No item found by that ID.
   </div>
   <v-container v-else fluid class="w-100">
-    <v-row><div class="item-title"><h1>{{ item?.name }}</h1></div></v-row>
     <v-row>
-      <v-col>
+      <h1 class="my-0 my-sm-4">{{ item?.name }}</h1>
+    </v-row>
+    <v-row class="my-0">
+      <v-col cols="12" md="6">
         <AttachmentCarousel :item="item" />
       </v-col>
-      <v-col class="item-description">
+      <v-col cols="12" md="6">
         <v-container>
           <v-row>
             <div v-html="htmlizeLineBreaks(item?.description)"></div>
@@ -62,17 +64,9 @@ onMounted(() => {
   </v-container>
 </template>
 <style lang="css" scoped>
-.item-details {
-  text-align: left;
-}
-
 .item-price {
   padding: 0.5em;
   font-weight: bold;
   font-family: monospace;
-}
-
-.item-img {
-  width:80%;
 }
 </style>
